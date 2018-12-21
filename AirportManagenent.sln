@@ -7,7 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirportManagenent", "Airpor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28D5075B-31EC-4F0F-823F-916ED9BC3E82}"
 	ProjectSection(SolutionItems) = preProject
-		Departures.cs = Departures.cs
 		Requirements.txt = Requirements.txt
 	EndProjectSection
 EndProject
