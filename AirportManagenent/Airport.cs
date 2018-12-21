@@ -8,7 +8,5 @@ namespace AirportManagenent
 {
     class Airport
     {
-
-        
     }
 }

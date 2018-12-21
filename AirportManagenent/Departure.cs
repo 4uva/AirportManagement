@@ -12,13 +12,13 @@ public class Departure
     readonly DateTimeOffset ScheduledDateandTime;
     DateTimeOffset RealDateandTime;
     readonly string FlightNumber;
-    readonly string PlanedAirport;
-    string RealDestinationAirport;
-    readonly string AssignedTerminal;
-    string RealTerminal;
-    readonly string AssignedGate;
-    string RealGate;
-    string FlightStatus; 
+    readonly Airport PlanedAirport;
+    Airport RealDestinationAirport;  
+    readonly Terminal AssignedTerminal;
+    Terminal RealTerminal;
+    readonly Gate AssignedGate;
+    Gate RealGate;
+    enum FlightStatus; 
 
        
     
