@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirportManagenent
 {
-    class Flight
+    public class Gate//is this Gate declaration?including body
     {
-        readonly string FlightNumber;
-        FlightStatus current = FlightStatus.Checkin;
     }
 }

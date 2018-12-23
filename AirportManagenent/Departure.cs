@@ -16,21 +16,14 @@ namespace AirportManagenent
         // terminal, flight status(check-in, gate closed,
         //arrived, departed at, unknown, canceled, expected at, delayed, in flight,gate)  
 
-        readonly DateTimeOffset ScheduledDateandTime;
-        DateTimeOffset RealDateandTime;
-        readonly string FlightNumber;
-        readonly Airport PlanedAirport;
-        Airport RealDestinationAirport;
-        readonly Terminal AssignedTerminal;
-        Terminal RealTerminal;
-        readonly Gate AssignedGate;
-        Gate RealGate;
-        FlightStatus current = FlightStatus.Checkin;
-
-      
-
-
-
+        readonly DateTimeOffset ScheduledDepareDateandTime;
+        DateTimeOffset UpdatedDepartureDateandTime;
+        readonly Airport PlanedDepartureAirport;
+        Airport UpdatedDepartureAirport;
+        readonly Terminal AssignedDepartureTerminal;
+        Terminal UpdatedDepartureTerminal;
+        readonly Gate AssignedDepartureGate;
+        Gate UpdatedDepartureGate;
     }
 }
 

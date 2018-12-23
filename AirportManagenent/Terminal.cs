@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirportManagenent
 {
-    class Arrivals
+   public class Terminal
     {
     }
 }
