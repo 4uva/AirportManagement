@@ -2,7 +2,13 @@
 
 namespace AirportManagenent
 {
-    enum FlightStatus
+    enum FlightStatus 
     {
+        Checkin,
+        GateClosed,
+        Boarding,
+        Cancelled,
+        InFlight,
+        Landed
     }
 }

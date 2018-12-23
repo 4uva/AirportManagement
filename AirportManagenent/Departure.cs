@@ -25,7 +25,9 @@ namespace AirportManagenent
         Terminal RealTerminal;
         readonly Gate AssignedGate;
         Gate RealGate;
-         FlightStatus { };
+        FlightStatus current = FlightStatus.Checkin;
+
+      
 
 
 
