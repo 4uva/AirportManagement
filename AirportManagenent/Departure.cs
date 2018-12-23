@@ -17,8 +17,8 @@ namespace AirportManagenent
         //arrived, departed at, unknown, canceled, expected at, delayed, in flight,gate)  
 
         readonly DateTimeOffset ScheduledDepareDateandTime;
-        DateTimeOffset UpdatedDepartureDateandTime;
-        readonly Airport PlanedDepartureAirport;
+        DateTimeOffset ActualDepartureDateandTime;
+        readonly Airport AssignedDepartureAirport;
         Airport UpdatedDepartureAirport;
         readonly Terminal AssignedDepartureTerminal;
         Terminal UpdatedDepartureTerminal;

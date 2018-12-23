@@ -9,8 +9,8 @@ namespace AirportManagenent
     class Arrival : Flight
     {
         readonly DateTimeOffset ScheduledArrivalDateandTime;
-        DateTimeOffset UpdatedArrivalDateandTime;
-        readonly Airport PlanedArrivalAirport;
+        DateTimeOffset ActualArrivalDateandTime;
+        readonly Airport AssignedArrivalAirport;
         Airport UpdatedArrivalAirport;
         readonly Terminal AssignedArrivalTerminal;
         Terminal UpdatedArrivalTerminal;

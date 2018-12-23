@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirportManagenent
 {
-    public class Gate//is this Gate declaration?including body
+    public class Gate// Gate declaration including body
     {
     }
 }
