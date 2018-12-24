@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AirportManagenent
+namespace AirportManagement
 {
     enum FlightStatus 
     {

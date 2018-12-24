@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8229DC4B-4400-4D25-BA02-37BD6679C400}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AirportManagenent</RootNamespace>
-    <AssemblyName>AirportManagenent</AssemblyName>
+    <RootNamespace>AirportManagement</RootNamespace>
+    <AssemblyName>AirportManagement</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
