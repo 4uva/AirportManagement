@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace AirportManagement.Data
 {
-    class Airport
-    {
+   public class Airport
+    {//название аэропорта прибытия, город аэропорта
+     //прибытия, погода в аэропорту прибытия, часовой
+     // пояс аэропорта прибытия — все эти данные 
+     //можно считать частью прибытия
+    
+     public Location Location{ get; set; }
+     public Weather Weather{ get; set; }
+    public TimeZoneInfo LocalTimeZone{ get; set; }
+        
+        
+
     }
 }

@@ -8,14 +8,14 @@ namespace AirportManagement.Data
 {
     class Arrival : Flight
     {
-        readonly DateTimeOffset ScheduledArrivalDateandTime;
-        DateTimeOffset ActualArrivalDateandTime;
-        readonly Airport AssignedArrivalAirport;
-        Airport UpdatedArrivalAirport;
-        readonly Terminal AssignedArrivalTerminal;
-        Terminal UpdatedArrivalTerminal;
-        readonly Gate AssignedArrivalGate;
-        Gate UpdatedArrivalGate;
+        public  DateTimeOffset ScheduledArrivalDateandTime{ get; }
+        public DateTimeOffset ActualArrivalDateandTime{ get; set; }
+        public Airport AssignedArrivalAirport{ get;  }
+        public Airport UpdatedArrivalAirport{ get; set; }
+        public  Terminal AssignedArrivalTerminal{ get;  }
+        public Terminal UpdatedArrivalTerminal{ get; set; }
+        public  Gate AssignedArrivalGate{ get;  }
+        public Gate UpdatedArrivalGate{ get; set; }
       
     }
 }

@@ -8,7 +8,7 @@ namespace AirportManagement.Data
 {
     class Flight
     {
-        readonly string FlightNumber;
+        string FlightNumber { get; set; }
         FlightStatus current = FlightStatus.Checkin;
     }
 }
