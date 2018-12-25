@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirportManagement
+namespace AirportManagement.Data
 {
-    class Airport
+
+   public class Terminal
     {
     }
 }

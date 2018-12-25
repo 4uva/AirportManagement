@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirportManagement
+namespace AirportManagement.Data
 {
-    class Flight
+    class Passenger
     {
-        readonly string FlightNumber;
-        FlightStatus current = FlightStatus.Checkin;
     }
 }
