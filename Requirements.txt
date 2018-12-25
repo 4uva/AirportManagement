@@ -36,7 +36,7 @@ Represent data as arrays (simple types and structures)
 
 Business-logic methods: view arrivals, view departures, view flight pricelist,
 view passengers list, search flight number, search first and second name.
-Methods should take parameters (data for manipulations and return results{ get; set; }
+Methods should take parameters (data for manipulations and return results;
 for example, search flight number must return flight with input number)
 
 Implement interface methods for every business-logic method
