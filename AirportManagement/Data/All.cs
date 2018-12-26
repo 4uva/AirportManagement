@@ -13,9 +13,13 @@ namespace AirportManagement.Data
         {
             var Airports = new List<Airport>()
             {
-             // Airport a =new 
+              new Airport()
             };
-            // IList<int> intList = new List<int>();
+            //List<int> intList = new List<int>()
+            //{
+            //    10 + 1,
+            //    20
+            //};
         }
     }
 }
