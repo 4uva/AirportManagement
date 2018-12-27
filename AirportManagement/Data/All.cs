@@ -11,9 +11,15 @@ namespace AirportManagement.Data
 
         static void Create()
         {
+            var a = new Airport();
+            var b = new Airport();
+            var c = new Airport();
+            var d = new Airport();
+            a.Location = new Location();
+            
             var airports = new List<Airport>()
             {
-              new Airport(), new Airport (),new Airport(), new Airport ()
+              a, b, c, d//new Airport (),new Airport(), new Airport ()
             };
 
             var airports2 = new List<Airport>();

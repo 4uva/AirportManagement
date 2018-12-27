@@ -15,7 +15,6 @@ namespace AirportManagement.Data
         public  Terminal AssignedArrivalTerminal{ get;  }
         public Terminal UpdatedArrivalTerminal{ get; set; }
         public  Gate AssignedArrivalGate{ get;  }
-        public Gate UpdatedArrivalGate{ get; set; }
-      
+        public Gate UpdatedArrivalGate{ get; set; }      
     }
 }
