@@ -11,15 +11,20 @@ namespace AirportManagement.Data
 
         static void Create()
         {
-            var Airports = new List<Airport>()
+            var airports = new List<Airport>()
             {
-              new Airport()
+              new Airport(), new Airport (),new Airport(), new Airport ()
             };
-            //List<int> intList = new List<int>()
-            //{
-            //    10 + 1,
-            //    20
-            //};
+
+            var airports2 = new List<Airport>();
+            airports2.Add(new Airport());
+            airports2.Add(new Airport());
+            airports2.Add(new Airport());
+            airports2.Add(new Airport());
+
+            var airports3 = new List<Airport>();//список на входе
+            airports3.AddRange(new List<Airport>() { new Airport(), new Airport(), new Airport(), new Airport() });
+            airports3.AddRange(new Airport[] { new Airport(), new Airport(), new Airport(), new Airport() });//массив на выходе
         }
     }
 }
