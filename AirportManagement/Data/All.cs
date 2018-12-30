@@ -7,6 +7,8 @@ namespace AirportManagement.Data
    //аэропортов, полётов, и авиакомпаний
     public class All
     {
+        All all = new All();
+      
         void Create()
         {
             var a = new Airport();
@@ -34,13 +36,13 @@ namespace AirportManagement.Data
             g.Name = "Gatwick";
             i.Name = "Insbruk";
 
-            var airports = new List<Airport>()
+           /* var airports = new List<Airport>()
             {
                 a, b, c, d
                 //new Airport (), new Airport (), new Airport(), new Airport (r              a.Airport="Florence";gj
-            };
-         Airports = new List<Airport> { }
-
+            };*/
+            Airports = new List<Airport> { a, b, c, d };
+       
 
         }
 
@@ -49,6 +51,7 @@ namespace AirportManagement.Data
 
     }
 }
+
 
 //var airports0 = new List<Airport>()
 //{
