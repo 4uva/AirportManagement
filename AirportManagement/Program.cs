@@ -11,6 +11,8 @@ namespace AirportManagement
     {
         static void Main(string[] args)
         {
+            Console.WriteLine();
+
            // All all = new All();административный метод
            // all.Create(); вызова функции Create 
         }
