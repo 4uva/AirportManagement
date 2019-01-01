@@ -7,9 +7,15 @@ namespace AirportManagement.Data
    //аэропортов, полётов, и авиакомпаний
     public class All
     {
-        All all = new All();
-      
-        void Create()
+        public All()//модификаторы, имя класса, 
+                    //в скобках список аргументов
+        {
+            Create();//упоминать экземпляр класса нет необходимости
+        }
+
+        //поле r
+        //All All2 { get; set; }  свойство
+        public void Create()
         {
             var a = new Airport();
             //1)мы присвоили переменной а значение нового аэропорта
@@ -36,15 +42,19 @@ namespace AirportManagement.Data
             g.Name = "Gatwick";
             i.Name = "Insbruk";
 
-           /* var airports = new List<Airport>()
-            {
-                a, b, c, d
-                //new Airport (), new Airport (), new Airport(), new Airport (r              a.Airport="Florence";gj
-            };*/
+            /* var airports = new List<Airport>()
+             {
+                 a, b, c, d
+                 //new Airport (), new Airport (), new Airport(), new Airport (r              a.Airport="Florence";gj
+             };*/
+
             Airports = new List<Airport> { a, b, c, d };
-       
+
 
         }
+     
+
+
 
         public List<Airport> Airports { get; set; }
         
