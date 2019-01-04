@@ -16,6 +16,10 @@ namespace AirportManagement
            DataonScreen dataonScreen  = new DataonScreen();
             dataonScreen.DataOutput(all.Airports);
             Console.ReadKey();
+            Menu menu = new Menu();
+            string UserInput = Console.ReadLine();
+            menu.Modify( UserInput);
+
             // all.Create(); вызова функции Create 
         }
     }

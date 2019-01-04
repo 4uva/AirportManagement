@@ -14,10 +14,11 @@ namespace AirportManagement.Presentation
             const string c = "Cancel";
             const string e = "Unrecognized";
              Console.WriteLine(
-                "There is a command list. " +
+                "Hi! This is admin panel. You could  " +
                 "To add airport - press a, " +
                 "to update - b, " +
-                "to delete - c"+ "to cancel operation -d");
+                "to delete - c"+ "to cancel operation -d" + 
+                "Please make your choice");
 
             switch (UserInput)
             {
