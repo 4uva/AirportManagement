@@ -4,13 +4,13 @@ namespace AirportManagement.Presentation
 {
     class Menu
     {
-        public void DisplayPrompt(string prompt)
+        public void DisplayPrompt()
         {
             Console.WriteLine(
               "Hi! This is admin panel. You could  " +
-              "To add airport - press a, " +
-              "to update - b, " +
-              "to delete - c" + "to cancel operation -d" +
+              "add airport - press a, " +
+              " update - b, " +
+              "delete - c, " + "to cancel operation -d " + 
               "Please make your choice"
             );
         }
