@@ -13,12 +13,15 @@ namespace AirportManagement
         static void Main(string[] args)
         {
             All all = new All();
-           DataonScreen dataonScreen  = new DataonScreen();
-            dataonScreen.DataOutput(all.Airports);
-            Console.ReadKey();
+            DataonScreen dataonScreen = new DataonScreen();
+            //dataonScreen.DataOutput(all.Airports);
             Menu menu = new Menu();
+            string prompt = Console.ReadLine();
+            menu.DisplayPrompt(prompt);
+            Console.ReadKey();
             string UserInput = Console.ReadLine();
-            menu.Modify( UserInput);
+            menu.Modify(UserInput);
+            Console.ReadKey();
 
             // all.Create(); вызова функции Create 
         }
