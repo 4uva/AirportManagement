@@ -1,24 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AirportManagement.Presentation
 {
     class Menu
-    { 
+    {
+        public void DisplayPrompt(string prompt)
+        {
+            Console.WriteLine(
+              "Hi! This is admin panel. You could  " +
+              "To add airport - press a, " +
+              "to update - b, " +
+              "to delete - c" + "to cancel operation -d" +
+              "Please make your choice"
+            );
+        }
 
-         public  string Modify(string UserInput)
+        public string Modify(string UserInput)
         {
             const string a = "Add";
             const string b = "Update";
             const string c = "Cancel";
             const string e = "Unrecognized";
-             Console.WriteLine(
-                "Hi! This is admin panel. You could  " +
-                "To add airport - press a, " +
-                "to update - b, " +
-                "to delete - c"+ "to cancel operation -d" + 
-                "Please make your choice");
 
             switch (UserInput)
             {
@@ -37,11 +39,9 @@ namespace AirportManagement.Presentation
                 default:
                     Console.WriteLine("Delete");
                     break;
-
-                    
             }
             return UserInput;
         }
-           
     }
 }
+
