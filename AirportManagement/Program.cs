@@ -17,7 +17,6 @@ namespace AirportManagement
             //dataonScreen.DataOutput(all.Airports);
             Menu menu = new Menu();
             menu.DisplayPrompt();
-            Console.ReadKey();
             string UserInput = Console.ReadLine();
             menu.Modify(UserInput);
             Console.ReadKey();
