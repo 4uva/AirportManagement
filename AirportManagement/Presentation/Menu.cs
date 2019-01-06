@@ -15,12 +15,16 @@ namespace AirportManagement.Presentation
             );
         }
 
-        public string Modify(string UserInput)
+        public string Modify(string UserInput)//вот откуда эта 
+                                              //функция берет значение UserInput
         {
-            const string a = "Add";
-            const string b = "Update";
-            const string c = "Cancel";
-            const string e = "Unrecognized";
+            const string a = "a";//теперь относительно а, 
+                                   //в UserInput а -это строка, а тут а -это имя 
+                                   //это совершенно разные вещи и как их связать
+                                   //непонятно
+            const string b = "b";
+            const string c = "c";
+            const string e = "e";
 
             switch (UserInput)
             {
