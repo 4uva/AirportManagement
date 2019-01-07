@@ -10,7 +10,7 @@ namespace AirportManagement.Presentation
               "Hi! This is admin panel. You could  " +
               "add airport - press a, " +
               " update - b, " +
-              "delete - c, " + "to cancel operation -d " + 
+              "delete - d, " + "to cancel operation -c " + 
               "Please make your choice"
             );
         }
@@ -24,7 +24,7 @@ namespace AirportManagement.Presentation
                                    //непонятно
             const string b = "b";
             const string c = "c";
-            const string e = "e";
+            const string d = "d";
 
             switch (UserInput)
             {
@@ -37,11 +37,11 @@ namespace AirportManagement.Presentation
                 case c:
                     Console.WriteLine("Cancel");
                     break;
-                case e:
-                    Console.WriteLine("Wrong choice. Please try again.");
+                case d:
+                    Console.WriteLine("Delete");
                     break;
                 default:
-                    Console.WriteLine("Delete");
+                    Console.WriteLine("Wrong choice. Please try again."); ;
                     break;
             }
             return UserInput;
