@@ -13,52 +13,48 @@ namespace AirportManagement.Data
             Create();//упоминать экземпляр класса нет необходимости
         }
 
+        public Airport AddAirport(string locationName)
+        // создали публичную функцию добавить аэропорт , котррая
+        //возращает аэропорт и на вход получает имя аэропорта
+        {
+            var a = CreateAirport(locationName);
+            //создали переменную и присвоили ей значение вызова 
+            //функции с параметром локация аэропорта
+            Airports.Add(a);//добавили экземпляр аэропорта 
+            //со значением фактического параметра а
+            return a;
+            //вернули значение фактического параметра
+        }
+        Airport CreateAirport(string locationName)
+        // создали функцию, которая создает
+        // экземпляр класса аэропорт, присвоили ей значение локации , 
+        //а потом дали имя, которое у нас уже есть в поле класса Location
+        {
+            var a = new Airport();//
+            //1)мы присвоили переменной а значение нового аэропорта
+            var f = new Location();//
+            a.Location = f;
+            f.Name = locationName;
+            //2)мы присвоили переменной f значение локация var g = new Location();           
+            //мы присвоили полю                                                                         Аэропорта 
+            //значение объекта типа Location, у которого есть поле `Name`c.Location = g;
+            //3)мы обратились к полю Name класса Location
+            return a;//переменная умрет, а нам нужно сделать так,
+            // чтоб эти данные а можно было записать в функции
+        }
+
         //поле r
         //All All2 { get; set; }  свойство
-        public void Create()
+        void Create()
         {
-            var a = new Airport();
-            //1)мы присвоили переменной а значение нового аэропорта
-            var b = new Airport();
-            var c = new Airport();
-            var d = new Airport();
-
-            var f = new Location();
-            //2)мы присвоили переменной f значение локация
-            var e = new Location();
-            var g = new Location();
-            var i = new Location();
-
-            //мы присвоили полю                                                                         Аэропорта 
-            //значение объекта типа Location, у которого есть поле `Name`
-            a.Location = f;
-            b.Location = e;
-            c.Location = g;
-            d.Location = i;
-
-            f.Name = "Florence";
-            //3)мы обратились к полю Name класса Location 
-            e.Name = "Elabuga";
-            g.Name = "Gatwick";
-            i.Name = "Insbruk";
-
-            /* var airports = new List<Airport>()
-             {
-                 a, b, c, d
-                 //new Airport (), new Airport (), new Airport(), new Airport (r              a.Airport="Florence";gj
-             };*/
-
-            Airports = new List<Airport> { a, b, c, d };
-
-
+            Airports = new List<Airport>();//создали список
+            AddAirport("Florence");//вызвали экземпляр списка
+            AddAirport("Elabuga");
+            AddAirport("Gatwick");
+            AddAirport("Innsbruk");
         }
-     
-
-
 
         public List<Airport> Airports { get; set; }
-        
-
     }
 }
 
