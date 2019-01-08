@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using AirportManagement.Data;
 namespace AirportManagement.Presentation
 {
-    class DataonScreen
+    class AirportPresentation
     {
-        public DataonScreen()
+        public AirportPresentation()
         {
         }
    
-        public  void DataOutput(List<Airport> Airports)
+        public void Output(List<Airport> Airports)
         {
             string Header = "Airports";
             Console.WriteLine(Header);
@@ -23,7 +23,7 @@ namespace AirportManagement.Presentation
         //void HeaderPresentation()
         //{
         //}
-         void Output(Airport airport)//output only 1 Airport
+       public  void Output(Airport airport)//output only 1 Airport
          {  
              var a = airport.Location;
              var b = a.Name;//можно закомментировать
