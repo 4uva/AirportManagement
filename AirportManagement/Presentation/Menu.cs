@@ -15,36 +15,34 @@ namespace AirportManagement.Presentation
             );
         }
 
-        public string Modify(string UserInput)//вот откуда эта 
-                                              //функция берет значение UserInput
-        {
-            const string a = "a";//теперь относительно а, 
-                                   //в UserInput а -это строка, а тут а -это имя 
-                                   //это совершенно разные вещи и как их связать
-                                   //непонятно
+        public UserChoice Modify(string UserInput)//вот откуда эта 
+                                                  //функция берет значение UserInput
+     
+        { const string a = "a";
             const string b = "b";
             const string c = "c";
             const string d = "d";
+            
 
             switch (UserInput)
             {
                 case a:
-                    Console.WriteLine("Add");
+                   ;
                     break;
                 case b:
-                    Console.WriteLine("Update");
+                  ;
                     break;
                 case c:
-                    Console.WriteLine("Cancel");
+                   ;
                     break;
                 case d:
-                    Console.WriteLine("Delete");
+                    ;
                     break;
                 default:
                     Console.WriteLine("Wrong choice. Please try again."); ;
                     break;
             }
-            return UserInput;
+            return UserChoice;
         }
     }
 }
