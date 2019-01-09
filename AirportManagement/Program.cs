@@ -24,6 +24,10 @@ namespace AirportManagement
             airportPresentation.Output();
             all.AddAirport (airportPresentation);
     
+            //string UserInput2 = Console.ReadLine();
+            //Console.ReadKey();
+            //menu.AirportDatabaseCreation(UserInput2);
+
             // all.Create(); вызова функции Create 
         }
     }
