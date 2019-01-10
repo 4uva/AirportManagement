@@ -27,22 +27,22 @@ namespace AirportManagement.Presentation
             switch (UserInput)
             {
                 case a:
-                   ;
-                    break;
+                 return UserChoice.Add;
+                    
                 case b:
-                  ;
-                    break;
+                 return UserChoice.Update;
+                    
                 case c:
-                   ;
-                    break;
+                  return UserChoice.Delete ;
+                   
                 case d:
-                    ;
-                    break;
+                return   UserChoice.Cancel ;
+                    
                 default:
-                    Console.WriteLine("Wrong choice. Please try again."); ;
-                    break;
+                  return UserChoice.Irrelevant ;
+                   
             }
-            return UserChoice;
+            
         }
     }
 }

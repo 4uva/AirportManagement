@@ -2,11 +2,13 @@
 
 namespace AirportManagement.Presentation
 {
-    enum UserChoice
+  public  enum UserChoice
     {
         Add,
         Update,
         Delete,
-        Cancel
+        Cancel,
+
+        Irrelevant
     }
 }
