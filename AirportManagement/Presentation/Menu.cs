@@ -15,7 +15,7 @@ namespace AirportManagement.Presentation
             );
         }
 
-        public UserChoice Modify(string UserInput)//вот откуда эта 
+        public UserChoice IdentifyInput(string UserInput)//вот откуда эта 
                                                   //функция берет значение UserInput
      
         { const string a = "a";
@@ -42,7 +42,7 @@ namespace AirportManagement.Presentation
                   return UserChoice.Irrelevant ;
                    
             }
-            
+           
         }
     }
 }

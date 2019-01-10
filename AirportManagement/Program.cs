@@ -18,17 +18,15 @@ namespace AirportManagement
             Menu menu = new Menu();
             menu.DisplayPrompt();
             string UserInput = Console.ReadLine();
-            menu.Modify(UserInput);
-            Console.ReadKey();
-
-            airportPresentation.Output();
-            all.AddAirport (airportPresentation);
-    
-            //string UserInput2 = Console.ReadLine();
-            //Console.ReadKey();
-            //menu.AirportDatabaseCreation(UserInput2);
-
-            // all.Create(); вызова функции Create 
+            UserChoice userchoice =menu.IdentifyInput(UserInput);
+            Console.ReadLine();
+           airportPresentation.DisplayInputPrompt();
+         //4) программа видит, что юзер выбрал добавить,
+            // и выдаёт приглашение ввести аэропорт (где это будет в коде?)`
+            // AirPortPresentation layor нужна ли новая функция, или
+            // мы можем вложить это приглашение в функцию DisplayPrompt()- menu class`
+           // airportPresentation.Output();
+            //all.AddAirport (airportPresentation);
         }
     }
 }
