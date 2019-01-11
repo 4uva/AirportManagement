@@ -40,9 +40,51 @@ namespace AirportManagement.Presentation
                     
                 default:
                   return UserChoice.Irrelevant ;
-                   
+                  
             }
-           
+        }
+              public void DisplayInputPrompt (UserChoice userChoice)
+
+              //если юзер хочет добавить аэропорт, 
+              //то нам нужно запросить имя аэропорта, 
+              //прочитать его и добавить
+                 {
+                     if (  userChoice == UserChoice.Add)
+                {
+                 Console.WriteLine ("Please add an Airport");
+
+                }  
+                if ( userChoice == UserChoice.Update)
+                {
+                 Console.WriteLine ("Please update an Airport");
+
+                }  
+                if ( userChoice == UserChoice.Update)
+                {
+                 Console.WriteLine ("Please update an Airport");
+
+                }  
+                if ( userChoice == UserChoice.Cancel)
+                {
+                 Console.WriteLine ("Please choose other option");
+
+                }  
+                if ( userChoice == UserChoice.Delete)
+                {
+                 Console.WriteLine ("Please delete an Airport");
+
+                }  
+                if ( userChoice == UserChoice.Irrelevant)
+                {
+                 Console.WriteLine ("Please try again");
+
+                }  
+
+               //eсли юзер хочет удалить аэропорт, то нам нужно
+               // вывести список, запросить номер или имя, и удалить его
+               //а если хочет переименовать, то вывести список, запросить 
+               //номер или имя, запросить новое имя, и присвоить   
+ 
         }
     }
 }

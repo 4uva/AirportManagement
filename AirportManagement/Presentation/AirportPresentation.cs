@@ -26,10 +26,7 @@ namespace AirportManagement.Presentation
             var b = a.Name;//можно закомментировать
             Console.WriteLine(b);//Console.WriteLine(airport.Location.Name) or `a.Name`,
         }
-        public void DisplayInputPrompt()
-       {
-           Console.WriteLine ("Please add Airport");
-       }
+        
         //public string AirportDatabaseCreation(string UserInput2)
         //{
         //    Console.WriteLine("Please add airport name");
