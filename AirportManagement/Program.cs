@@ -16,25 +16,25 @@ namespace AirportManagement
             AirportPresentation airportPresentation = new AirportPresentation();
             //airportPresentation.Output(all.Airports);
             Menu menu = new Menu();
-            menu.DisplayPrompt();
-            string UserInput = Console.ReadLine();
-            UserChoice userChoice =menu.IdentifyInput(UserInput);
-            menu.DisplayInputPrompt (userChoice);
+
+            menu.Run();
+            //UserChoice userChoice =
+            menu.DisplayInputPrompt(userChoice);
             //userchoice.тут нужно вызвать функцию  у объекта
-           
-         //4) программа видит, что юзер выбрал добавить,
+
+            //4) программа видит, что юзер выбрал добавить,
             // и выдаёт приглашение ввести аэропорт (где это будет в коде?)`
             // AirPortPresentation layor нужна ли новая функция, или
             // мы можем вложить это приглашение в функцию DisplayPrompt()- menu class`
-           // airportPresentation.Output();
+            // airportPresentation.Output();
             //all.AddAirport (airportPresentation);
-            
+
             //сли юзер хочет добавить аэропорт, 
             //то нам нужно запросить имя аэропорта, 
             //прочитать его и добавить
             //если юзер хочет удалить аэропорт, 
             //то нам нужно вывести список, запросить
-             //номер или имя, и удалить его
+            //номер или имя, и удалить его
             //а если хочет переименовать, 
             //то вывести список, запросить номер или имя, запросить новое имя, и присвоить
         }
