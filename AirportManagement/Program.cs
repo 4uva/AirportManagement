@@ -14,19 +14,22 @@ namespace AirportManagement
         {
             All all = new All();
             AirportPresentation airportPresentation = new AirportPresentation();
-            //airportPresentation.Output(all.Airports);
             Menu menu = new Menu();
-
-            menu.Run();
-            //UserChoice userChoice =
-            menu.DisplayInputPrompt(userChoice);
-            //userchoice.тут нужно вызвать функцию  у объекта
+            UserChoice userchoice = menu.Run();
 
             //4) программа видит, что юзер выбрал добавить,
-            // и выдаёт приглашение ввести аэропорт (где это будет в коде?)`
-            // AirPortPresentation layor нужна ли новая функция, или
-            // мы можем вложить это приглашение в функцию DisplayPrompt()- menu class`
-            // airportPresentation.Output();
+            if (userchoice == UserChoice.Add)
+            {
+                // и выдаёт приглашение ввести аэропорт
+                Console.WriteLine("Please add an Airport");
+                //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
+                string userInput = Console.ReadLine();
+                //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
+                all.AddAirport(userInput);
+            }
+           ;
+
+
             //all.AddAirport (airportPresentation);
 
             //сли юзер хочет добавить аэропорт, 
