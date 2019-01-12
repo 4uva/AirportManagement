@@ -26,8 +26,12 @@ namespace AirportManagement
                 string userInput = Console.ReadLine();
                 //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
                 all.AddAirport(userInput);
-            }
-           ;
+            };
+            //7)вызов функции ппроисхдит у объекта,
+            // 8)в аргумент  кладется вызов свойства у объекта классса
+
+            airportPresentation.Output(all.Airports);
+            Console.ReadKey();
 
 
             //all.AddAirport (airportPresentation);
