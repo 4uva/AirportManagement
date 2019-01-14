@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AirportManagement.Data;
+using AirportManagement.Data.Storage;
 using AirportManagement.Presentation;
 
 namespace AirportManagement
@@ -12,7 +13,7 @@ namespace AirportManagement
     {
         static void Main(string[] args)
         {
-            All all = new All();
+            All all = WriterReader.Read();// Constructor invocation for this object is not relevant anymore
             AirportPresentation airportPresentation = new AirportPresentation();
             Menu menu = new Menu();
             UserChoice userchoice = menu.Run();
@@ -44,6 +45,10 @@ namespace AirportManagement
             //номер или имя, и удалить его
             //а если хочет переименовать, 
             //то вывести список, запросить номер или имя, запросить новое имя, и присвоить
+
+            WriterReader.Write(all);//статический метод вызывается у класса
+           
         }
+     
     }
 }

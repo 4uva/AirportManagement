@@ -8,8 +8,7 @@ namespace AirportManagement.Data.Storage
 {
     class WriterReader
     {
-
-        public static void Write (All all )
+        public static void Write (All all)
         { 
             JsonSerializer serializer = new JsonSerializer();
             serializer.NullValueHandling = NullValueHandling.Ignore;
@@ -28,7 +27,7 @@ namespace AirportManagement.Data.Storage
                 JsonSerializer serializer = new JsonSerializer();
                 All all = (All)serializer.Deserialize(file, typeof(All));
                 return all;
-            } 
+            }
         }
     }
 }
