@@ -20,13 +20,20 @@ namespace AirportManagement.Data.Storage
         }
 
         public static All Read()
-        { 
-            // deserialize JSON directly from a file
-            using (StreamReader file = File.OpenText("all.json"))
+        {
+            try
             {
-                JsonSerializer serializer = new JsonSerializer();
-                All all = (All)serializer.Deserialize(file, typeof(All));
-                return all;
+                // deserialize JSON directly from a file
+                using (StreamReader file = File.OpenText("all.json"))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    All all = (All)serializer.Deserialize(file, typeof(All));
+                    return all;
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                return new All();
             }
         }
     }

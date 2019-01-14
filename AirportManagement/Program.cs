@@ -34,7 +34,6 @@ namespace AirportManagement
             airportPresentation.Output(all.Airports);
             Console.ReadKey();
 
-
             //all.AddAirport (airportPresentation);
 
             //сли юзер хочет добавить аэропорт, 
@@ -47,8 +46,7 @@ namespace AirportManagement
             //то вывести список, запросить номер или имя, запросить новое имя, и присвоить
 
             WriterReader.Write(all);//статический метод вызывается у класса
-           
+            Console.ReadKey();
         }
-     
     }
 }
