@@ -32,7 +32,7 @@ namespace AirportManagement
             // 8)в аргумент  кладется вызов свойства у объекта классса
 
             airportPresentation.Output(all.Airports);
-            Console.ReadKey();
+           
 
             //all.AddAirport (airportPresentation);
 

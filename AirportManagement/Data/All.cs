@@ -10,7 +10,6 @@ namespace AirportManagement.Data
         public All()//модификаторы, имя класса, 
                     //в скобках список аргументов
         {
-            Create();//упоминать экземпляр класса нет необходимости
         }
 
         public Airport AddAirport(string locationName)
@@ -45,7 +44,7 @@ namespace AirportManagement.Data
 
         //поле r
         //All All2 { get; set; }  свойство
-        void Create()
+      public  void Create()
         {
             Airports = new List<Airport>();//создали список
             AddAirport("Florence");//вызвали экземпляр списка

@@ -33,7 +33,9 @@ namespace AirportManagement.Data.Storage
             }
             catch (FileNotFoundException)
             {
-                return new All();
+                All all = new All();
+                all.Create();
+                return all;
             }
         }
     }
