@@ -16,43 +16,40 @@ namespace AirportManagement
             All all = WriterReader.Read();// Constructor invocation for this object is not relevant anymore
             AirportPresentation airportPresentation = new AirportPresentation();
             Menu menu = new Menu();
-             UserChoice userchoice = menu.Run();
 
- while (userchoice == UserChoice.Add) 
+            while (true)
+            {
+                UserChoice userchoice = menu.Run();
+                if (userchoice == UserChoice.Add)
                 {
-                 Console.WriteLine("Please add an Airport");
-                userchoice++;
+                    // и выдаёт приглашение ввести аэропорт
+                    Console.WriteLine("Please add an Airport");
+                    //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
+                    string userInput = Console.ReadLine();
+
+                    //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
+                    all.AddAirport(userInput);
                 }
 
+                if (userchoice == UserChoice.Irrelevant)
+                {
+                    //4) программа видит, что юзер выбрал добавить,
+                    // и выдаёт приглашение ввести аэропорт
+                    Console.WriteLine("Wrong choice.Please try again");
+                    //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
+                    string userInput = Console.ReadLine();
+                    //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
+                    all.AddAirport(userInput);
+                }
 
-            //4) программа видит, что юзер выбрал добавить,
-            if (userchoice == UserChoice.Add)
-            {
-                // и выдаёт приглашение ввести аэропорт
-                Console.WriteLine("Please add an Airport");
-                 //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
-                string userInput = Console.ReadLine();
-                
-                //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
-             
-           
-                all.AddAirport(userInput);
-            };
+                if (userchoice == UserChoice.Cancel)
+                {
+                    break;
+                }
+            }
+        
             //7)вызов функции ппроисхдит у объекта,
             // 8)в аргумент  кладется вызов свойства у объекта классса
-            
-           
-            
-            if (userchoice == UserChoice.Irrelevant)
-            {
-                // и выдаёт приглашение ввести аэропорт
-                Console.WriteLine("Wrong choice.Please try again");
-                //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
-                string userInput = Console.ReadLine();
-                //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
-                 all.AddAirport(userInput);
-            };
-
             airportPresentation.Output(all.Airports);
 
             //all.AddAirport (airportPresentation);
@@ -67,7 +64,7 @@ namespace AirportManagement
             //то вывести список, запросить номер или имя, запросить новое имя, и присвоить
 
             WriterReader.Write(all);//статический метод вызывается у класса
-            Console.ReadKey();
+            Console.ReadKey();            
         }
     }
 }
