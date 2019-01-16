@@ -16,23 +16,44 @@ namespace AirportManagement
             All all = WriterReader.Read();// Constructor invocation for this object is not relevant anymore
             AirportPresentation airportPresentation = new AirportPresentation();
             Menu menu = new Menu();
-            UserChoice userchoice = menu.Run();
+             UserChoice userchoice = menu.Run();
+
+ while (userchoice == UserChoice.Add) 
+                {
+                 Console.WriteLine("Please add an Airport");
+                userchoice++;
+                }
+
 
             //4) программа видит, что юзер выбрал добавить,
             if (userchoice == UserChoice.Add)
             {
                 // и выдаёт приглашение ввести аэропорт
                 Console.WriteLine("Please add an Airport");
-                //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
+                 //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
                 string userInput = Console.ReadLine();
+                
                 //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
+             
+           
                 all.AddAirport(userInput);
             };
             //7)вызов функции ппроисхдит у объекта,
             // 8)в аргумент  кладется вызов свойства у объекта классса
+            
+           
+            
+            if (userchoice == UserChoice.Irrelevant)
+            {
+                // и выдаёт приглашение ввести аэропорт
+                Console.WriteLine("Wrong choice.Please try again");
+                //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
+                string userInput = Console.ReadLine();
+                //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
+                 all.AddAirport(userInput);
+            };
 
             airportPresentation.Output(all.Airports);
-           
 
             //all.AddAirport (airportPresentation);
 
