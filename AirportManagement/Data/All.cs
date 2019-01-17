@@ -44,13 +44,18 @@ namespace AirportManagement.Data
 
         //поле r
         //All All2 { get; set; }  свойство
-      public  void Create()
+        public void Create()
         {
             Airports = new List<Airport>();//создали список
             AddAirport("Florence");//вызвали экземпляр списка
             AddAirport("Elabuga");
             AddAirport("Gatwick");
             AddAirport("Innsbruk");
+        }
+
+        public List<Airport> GetFilteredByPartialLocationAirports(string partialLocation)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Airport> Airports { get; set; }
