@@ -35,23 +35,44 @@ namespace AirportManagement
                 {
                     //-> enter a for add, b for edit, c for cancel, d for delete
                     //<- d
+                    Console.WriteLine("Enter part of airport's name");
                     //-> enter part of airport's name
+                    string airportPartialName = Console.ReadLine();
+
+                   = GetFilteredByPartialLocationAirports();
                     //<- bu
+                 //   if ( )
                     //-> found airports:
                     //-> 1. Budapest
                     //-> 2. Bucharest
+                    //-> notfound airports:
+                    Console.WriteLine("Airport is not in a list. Please try again or cancel deletion");
+                    // -- only if list contains more than 1 airport --
                     //-> enter a bigger part of airport's name or number in the list above
+                    Console.WriteLine("Enter a bigger part of airport's name or number in the list above");
                     //<- 1
+
+                    // -- here we have either number (and it implies one airport) --
+                    // -- or another part of name (and it implies a list again) --
+                    // -- of the list contains more than 1 item, we need to repeat the logic above --
+                    Console.WriteLine("Enter a bigger part of airport's name or number in the list above");
+                    // -- as soon as we have only one airport:
+                    Console.WriteLine("Identified airport Budapest, enter d for delete or enter for cancel");
                     //-> Identified airport Budapest, enter d for delete or enter for cancel
                     //<- (enter)
+                    Console.WriteLine("Deletion canceled");
                     //<- deletion canceled
+                    Console.WriteLine("Enter a for add, b for edit, c for cancel, d for deleted");
                     //-> enter a for add, b for edit, c for cancel, d for delete
                     //<- d
+                    Console.WriteLine("Enter part of airport's name");
                     //-> enter part of airport's name
+                     string userInputSelected = Console.ReadLine();
                     //<- buda
-                    //-> Identified airport Budapest, enter d for delete or enter for cancel
+                   Console.WriteLine("Identified airport Budapest, enter d for delete or enter for cancel");
+                    //->Identified airport Budapest, enter d for delete or enter for cancel
                     //<- d
-                    //<- airport Budapest successfully deleted                    
+                    Console.WriteLine("Airport Budapest successfully deleted ");                 
                 }
 
                 if (userchoice == UserChoice.Irrelevant)
