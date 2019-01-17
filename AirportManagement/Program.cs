@@ -36,7 +36,6 @@ namespace AirportManagement
                     //4) программа видит, что юзер выбрал добавить,
                     // и выдаёт приглашение ввести аэропорт
                     Console.WriteLine("Wrong choice.Please try again");
-                   
                 }
 
                 if (userchoice == UserChoice.Cancel)
