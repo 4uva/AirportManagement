@@ -31,6 +31,29 @@ namespace AirportManagement
                     all.AddAirport(userInput);
                 }
 
+                if (userchoice == UserChoice.Delete)
+                {
+                    //-> enter a for add, b for edit, c for cancel, d for delete
+                    //<- d
+                    //-> enter part of airport's name
+                    //<- bu
+                    //-> found airports:
+                    //-> 1. Budapest
+                    //-> 2. Bucharest
+                    //-> enter a bigger part of airport's name or number in the list above
+                    //<- 1
+                    //-> Identified airport Budapest, enter d for delete or enter for cancel
+                    //<- (enter)
+                    //<- deletion canceled
+                    //-> enter a for add, b for edit, c for cancel, d for delete
+                    //<- d
+                    //-> enter part of airport's name
+                    //<- buda
+                    //-> Identified airport Budapest, enter d for delete or enter for cancel
+                    //<- d
+                    //<- airport Budapest successfully deleted                    
+                }
+
                 if (userchoice == UserChoice.Irrelevant)
                 {
                     //4) программа видит, что юзер выбрал добавить,
@@ -47,7 +70,7 @@ namespace AirportManagement
             //7)вызов функции ппроисхдит у объекта,
             // 8)в аргумент  кладется вызов свойства у объекта классса
             airportPresentation.Output(all.Airports);
-
+          //DisplayPromptAddAirportAgain - ToDo list to implement
             //all.AddAirport (airportPresentation);
 
             //сли юзер хочет добавить аэропорт, 
