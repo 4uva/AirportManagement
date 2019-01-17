@@ -28,6 +28,25 @@ namespace AirportManagement.Presentation
                 case a:
                     return UserChoice.Add;
 
+
+
+        //  public void DisplayPromptAddAirportAgain()//    TODO LIST
+        //{
+        //    Console.WriteLine(
+        //      "If you need to  add one more Airport - press Enter, 
+         //     to cancel operation  press Esc " +
+        //      " update - b, " +
+        //      "delete - d, " + "to cancel operation -c " +
+        //      "Please make your choice"
+        //    );
+        //}
+
+
+
+
+
+
+
                 case b:
                     return UserChoice.Update;
 
