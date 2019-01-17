@@ -36,10 +36,7 @@ namespace AirportManagement
                     //4) программа видит, что юзер выбрал добавить,
                     // и выдаёт приглашение ввести аэропорт
                     Console.WriteLine("Wrong choice.Please try again");
-                    //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
-                    string userInput = Console.ReadLine();
-                    //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
-                    all.AddAirport(userInput);
+                   
                 }
 
                 if (userchoice == UserChoice.Cancel)
