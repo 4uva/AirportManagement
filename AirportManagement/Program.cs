@@ -22,95 +22,84 @@ namespace AirportManagement
                 UserChoice userchoice = menu.Run();
                 if (userchoice == UserChoice.Add)
                 {
-                    // и выдаёт приглашение ввести аэропорт
                     Console.WriteLine("Please add an Airport");
-                    //5) программа читает аэропорт у юзера(где это будет в коде ?), юзер ввёл `"Жуляны"` `menu Programs`
                     string userInput = Console.ReadLine();
-
-                    //6) программа вызывает `all.AddAirport`, передавая введённое имя(очевидно, в Main, потому что больше ни у кого нету нашего `All`)
                     all.AddAirport(userInput);
                 }
 
-                if (userchoice == UserChoice.Delete)
+                if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
                 {
-                    //-> enter a for add, b for edit, c for cancel, d for delete
-                    //<- d
-                    //-> enter part of airport's name
-                    Console.WriteLine("Enter part of airport's name");
-                    //<- bu
-                    string airportPartialName = Console.ReadLine();
-                    // All all = WriterReader.Read();
-                    List<Airport> filteredAirports =  all.GetFilteredByPartialLocationAirports(airportPartialName );
-                    // 3 варианта:
-                    // 1) много аэропортов, выводим их все, теперь запрашиваем индекс или подстроку.
-                    if ( filteredAirports.Count >1)
+                    Console.WriteLine("Enter part of airport's name");//просим ввести аэропорт частично
+                    string airportPartialName = Console.ReadLine();//читаем ввод
+                    List<Airport> filteredAirports =  all.GetFilteredByPartialLocationAirports(airportPartialName );//создаем список аэропортов на основе вызова функции фильтрации
+                    if (filteredAirports.Count > 1)//если длина списка больше 1
                     {
-                        Console.WriteLine("Found airports:");
-                        airportPresentation.Output(filteredAirports);
-                        Console.WriteLine("Enter a bigger part of airport's name or number in the list above");
-                        string indexOrSubstring = Console.ReadLine();
-
-                        /*
-                            int index;
-                            if (int.TryParse(s, out index)) { ... }
-
-                            - - is the same as - -
-
-                            if (int.TryParse(s, out int index)) { ... }
-                                                    ^^^
-                         */
+                        Console.WriteLine("Found airports:");//если юзер выводим сообщение нашли такие аэропорты
+                        airportPresentation.Output(filteredAirports);//обращаемся к слою презентация и выводим аэропорты
+                        Console.WriteLine("Enter a bigger part of airport's name or number in the list above");//просим ввести больше
+                                                                                         //букв или номер аэропорта в списке
 
 
-                        if (int.TryParse(indexOrSubstring, out int index))
+                        string indexOrSubstring = Console.ReadLine();//читаем ввод юзера и записываем переменную строку
+                        if (int.TryParse(indexOrSubstring, out int index))// проверяем или введенная строка не является число, 
+                                                                         //переменная выхолит со значением, а вхдит не с чем
+
                         {
-                            //можно пояснить 52 строку, мы вызываем функцию
-                            /// у какого объекта
-                            /// и на выходе или на входе при синтаксисе out int index
-                            //мы получаем интовое значение
+                            if (index == filteredAirports.Count - 1) ;//проверяем, чтоб индекс был в списке
 
                         }
-
                     }
-                    //    если получили индекс, берём по индексу аэропорт — он найден.
-                    //    если подстроку, опять фильтруем по ней и три варианта
-                    // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
-                    //    и снова три варианта
-                    // 3) один аэропорт — он найден
-
-                    //-> found airports:
-                    //-> 1. Budapest
-                    //-> 2. Bucharest
-                    //-> notfound airports:
+                    //если индекса нет в списке выводим на экран
+                    //НУЖНО ПРОПИСАТЬ УСЛОВИЕвыводим на экран  
+                   
+                    Console.WriteLine("The airport index is  irrelevant  Please try again or cancel deletion");
+                    //если аэропорта  нет в списке 
+                    //НУЖНО ПРОПИСАТЬ УСЛОВИЕвыводим на экран
                     Console.WriteLine("Airport is not in a list. Please try again or cancel deletion");
-                    // -- only if list contains more than 1 airport --
-                    //-> enter a bigger part of airport's name or number in the list above
-                    
-                    //<- 1
-                    //тестируем, номер ли это, через TryParse
-                    //если номер, у нас есть список, и в нём индексиеуем
-                    //если не номер, то это подстрока, и она отправляется в слой данных
-                    // -- here we have either number (and it implies one airport) --
-                    // -- or another part of name (and it implies a list again) --
-                    // -- of the list contains more than 1 item, we need to repeat the logic above --
-                    Console.WriteLine("Enter a bigger part of airport's name or number in the list above");
-                    // -- as soon as we have only one airport:
+                    //если аэропорт - в списке 
+                    //выводим на экран  
                     Console.WriteLine("Identified airport Budapest, enter d for delete or enter for cancel");
-                    //-> Identified airport Budapest, enter d for delete or enter for cancel
-                    //<- (enter)
+                    string userInput = Console.ReadLine();//считываем ввод юзера и прописывес механизм удаления
                     Console.WriteLine("Deletion canceled");
-                    //<- deletion canceled
                     Console.WriteLine("Enter a for add, b for edit, c for cancel, d for deleted");
-                    //-> enter a for add, b for edit, c for cancel, d for delete
-                    //<- d
                     Console.WriteLine("Enter part of airport's name");
-                    //-> enter part of airport's name
-                     string userInputSelected = Console.ReadLine();
-                    //<- buda
-                   Console.WriteLine("Identified airport Budapest, enter d for delete or enter for cancel");
-                    //->Identified airport Budapest, enter d for delete or enter for cancel
-                    //<- d
+                    string userInputSelected = Console.ReadLine();
+                    Console.WriteLine("Identified airport Budapest, enter d for delete or enter for cancel");
                     Console.WriteLine("Airport Budapest successfully deleted ");                 
                 }
+                // 3 варианта:
+                // 1) много аэропортов, выводим их все, теперь запрашиваем индекс или подстроку.
+                //    если получили индекс:
+                //      * если индекс подходит для списка, берём по индексу
+                //        аэропорт — он найден.
+                //      * если не подходит, пишем, что индекс неправильный,
+                //        и запрашиваем другую подстроку (как в пункте 2),
+                //        фильтруем по ней и снова три варианта
+                //    если подстроку, опять фильтруем по ней и три варианта
+                // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
+                //    и снова три варианта
+                // 3) один аэропорт — он найден
+
+
+                //-> enter a for add, b for edit, c for cancel, d for delete
+                //<- d
+                //-> enter part of airport's name
+                //<- bu
+                //-> found airports:
+                //-> 1. Budapest
+                //-> 2. Bucharest
+                //-> enter a bigger part of airport's name or number in the list above
+                //-> 1
+                //-> Identified airport Budapest, enter d for delete or enter for cancel
+                //<- (enter)
+                //<- deletion canceled
+                //-> enter a for add, b for edit, c for cancel, d for delete
+                //<- d
+                //-> enter part of airport's name
+                //<- buda
+                //-> Identified airport Budapest, enter d for delete or enter for cancel
+                //<- d
+                //-> Airport Budapest successfully deleted
 
                 if (userchoice == UserChoice.Irrelevant)
                 {
