@@ -35,13 +35,48 @@ namespace AirportManagement
                 {
                     //-> enter a for add, b for edit, c for cancel, d for delete
                     //<- d
-                    Console.WriteLine("Enter part of airport's name");
                     //-> enter part of airport's name
-                    string airportPartialName = Console.ReadLine();
-
-                   = GetFilteredByPartialLocationAirports();
+                    Console.WriteLine("Enter part of airport's name");
                     //<- bu
-                 //   if ( )
+                    string airportPartialName = Console.ReadLine();
+                    // All all = WriterReader.Read();
+                    List<Airport> filteredAirports =  all.GetFilteredByPartialLocationAirports(airportPartialName );
+                    // 3 варианта:
+                    // 1) много аэропортов, выводим их все, теперь запрашиваем индекс или подстроку.
+                    if ( filteredAirports.Count >1)
+                    {
+                        Console.WriteLine("Found airports:");
+                        airportPresentation.Output(filteredAirports);
+                        Console.WriteLine("Enter a bigger part of airport's name or number in the list above");
+                        string indexOrSubstring = Console.ReadLine();
+
+                        /*
+                            int index;
+                            if (int.TryParse(s, out index)) { ... }
+
+                            - - is the same as - -
+
+                            if (int.TryParse(s, out int index)) { ... }
+                                                    ^^^
+                         */
+
+
+                        if (int.TryParse(indexOrSubstring, out int index))
+                        {
+                            //можно пояснить 52 строку, мы вызываем функцию
+                            /// у какого объекта
+                            /// и на выходе или на входе при синтаксисе out int index
+                            //мы получаем интовое значение
+
+                        }
+
+                    }
+                    //    если получили индекс, берём по индексу аэропорт — он найден.
+                    //    если подстроку, опять фильтруем по ней и три варианта
+                    // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
+                    //    и снова три варианта
+                    // 3) один аэропорт — он найден
+
                     //-> found airports:
                     //-> 1. Budapest
                     //-> 2. Bucharest
@@ -49,9 +84,11 @@ namespace AirportManagement
                     Console.WriteLine("Airport is not in a list. Please try again or cancel deletion");
                     // -- only if list contains more than 1 airport --
                     //-> enter a bigger part of airport's name or number in the list above
-                    Console.WriteLine("Enter a bigger part of airport's name or number in the list above");
+                    
                     //<- 1
-
+                    //тестируем, номер ли это, через TryParse
+                    //если номер, у нас есть список, и в нём индексиеуем
+                    //если не номер, то это подстрока, и она отправляется в слой данных
                     // -- here we have either number (and it implies one airport) --
                     // -- or another part of name (and it implies a list again) --
                     // -- of the list contains more than 1 item, we need to repeat the logic above --
