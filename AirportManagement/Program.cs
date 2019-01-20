@@ -60,9 +60,14 @@ namespace AirportManagement
                             {
                                 Airport userSelectedAirport = filteredAirports[index];
                                 Console.WriteLine("Identified airport, " + userSelectedAirport.Location.Name + "enter d for delete or enter for cancel");
-                            } 
+                            }
+                            if (userchoice == UserChoice.Delete)
+                            {
+                                string deletion = Console.ReadLine();
+                                Console.WriteLine(" Selected airport was sucessfully deleted");
+                                all.DeleteAirport(Airport);
+                            }
 
-                        
                             //   
                         }
                     }
