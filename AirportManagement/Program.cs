@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AirportManagement.Data;
 using AirportManagement.Data.Storage;
 using AirportManagement.Presentation;
-
+using AirportManagement.BusinessLogic;
 namespace AirportManagement
 {
     class Program
@@ -14,13 +14,38 @@ namespace AirportManagement
         static void Main(string[] args)
         {
             // Constructor invocation for this object is not relevant anymore
+            All all = WriterReader.Read();//создаем экземпляр класса
+
+            MainLogic logic = new MainLogic(all);
+            //заводим экземпляр бизнес логики вместо экземпляра меню
+            //почему подчеркнуто MainLogic
+            while (true)
+            {
+                StepResult result = logic.RunStep();
+                // почему подчеркнуто StepResult
+                //  почему HE подчеркнуто ogic.RunStep();
+                //вызываем у бизнес логики функцию 
+                //так мы раньше вызывали меню 
+                //и значение и присваиваем в переменную
+                if (result == StepResult.Exit)//это переписанный Userchoicecancel
+                    break;
+            }
+            WriterReader.Write(all);//статический метод вызывается у класса
+            Console.ReadKey();
+        }
+
+        static void OldMain(string[] args)
+        {
+            // Constructor invocation for this object is not relevant anymore
             All all = WriterReader.Read();
-            AirportPresentation airportPresentation = new AirportPresentation();
+            AirportOnScreen airportPresentation = new AirportOnScreen();
             Menu menu = new Menu();
 
             while (true)
             {
                 UserChoice userchoice = menu.Run();
+                //это дублирующая логика 
+                //только для слоя презентации 
                 if (userchoice == UserChoice.Add)
                 {
                     Console.WriteLine("Please add an Airport");
