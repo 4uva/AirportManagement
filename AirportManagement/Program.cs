@@ -36,7 +36,7 @@ namespace AirportManagement
                     //читаем ввод
                     string airportPartialName = Console.ReadLine();
                     //создаем список аэропортов на основе вызова функции фильтрации
-                    List<Airport> filteredAirports = 
+                    List<Airport> filteredAirports =
                         all.GetFilteredByPartialLocationAirports(airportPartialName);
                     //если длина списка больше 1
                     if (filteredAirports.Count > 1)
@@ -53,27 +53,33 @@ namespace AirportManagement
                         string indexOrSubstring = Console.ReadLine();
                         //проверяем или введенная строка не является число,
                         //переменная выхолит со значением, а вхдит не с чем
-                        if (int.TryParse(indexOrSubstring, out int index)) 
+                        if (int.TryParse(indexOrSubstring, out int index))//проверили строка или число
                         {
                             //проверяем, чтоб индекс был в списке
-                            if (index < filteredAirports.Count  && index >= 0);
+                            if (index < filteredAirports.Count && index >= 0) ;
                             {
-                                Airport userSelectedAirport = filteredAirports[index];
-                                Console.WriteLine("Identified airport, " + userSelectedAirport.Location.Name + "enter d for delete or enter for cancel");
-                            }
-                            if (userchoice == UserChoice.Delete)
-                            {
+                                Airport userSelectedAirport = filteredAirports[index];//ищем в списке по индексу
+                                Console.WriteLine("Identified airport, " +
+                                    userSelectedAirport.Location.Name +
+                                    "enter d for delete or enter for cancel");//нашлиns  аропорт просим юзера удалилить или отменить операцию удаления
                                 string deletion = Console.ReadLine();
-                                Console.WriteLine(" Selected airport was sucessfully deleted");
-                                all.DeleteAirport(Airport);
+                                { // TODO: подумать, что дают эти скобки
+                                    if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
+                                    {
+                                        all.DeleteAirport(userchoice);// тут каша
+                                        Console.WriteLine(" Selected airport was sucessfully deleted");// сообщили об удалении
+
+                                    }
+                                }
                             }
+
 
                             //   
                         }
                     }
                     //если индекса нет в списке выводим на экран
                     //НУЖНО ПРОПИСАТЬ УСЛОВИЕвыводим на экран  
-                   
+
                     Console.WriteLine("The airport index is  irrelevant  Please try again or cancel deletion");
                     //если аэропорта  нет в списке 
                     //НУЖНО ПРОПИСАТЬ УСЛОВИЕвыводим на экран
@@ -87,7 +93,7 @@ namespace AirportManagement
                     Console.WriteLine("Enter part of airport's name");
                     string userInputSelected = Console.ReadLine();
                     Console.WriteLine("Identified airport Budapest, enter d for delete or enter for cancel");
-                    Console.WriteLine("Airport Budapest successfully deleted ");                 
+                    Console.WriteLine("Airport Budapest successfully deleted ");
                 }
                 // 3 варианта:
                 // 1) много аэропортов, выводим их все, теперь запрашиваем индекс или подстроку.
@@ -135,11 +141,11 @@ namespace AirportManagement
                     break;
                 }
             }
-        
+
             //7)вызов функции ппроисхдит у объекта,
             // 8)в аргумент  кладется вызов свойства у объекта классса
             airportPresentation.Output(all.Airports);
-          //DisplayPromptAddAirportAgain - ToDo list to implement
+            //DisplayPromptAddAirportAgain - ToDo list to implement
             //all.AddAirport (airportPresentation);
 
             //сли юзер хочет добавить аэропорт, 
@@ -152,7 +158,7 @@ namespace AirportManagement
             //то вывести список, запросить номер или имя, запросить новое имя, и присвоить
 
             WriterReader.Write(all);//статический метод вызывается у класса
-            Console.ReadKey();            
+            Console.ReadKey();
         }
     }
 }
