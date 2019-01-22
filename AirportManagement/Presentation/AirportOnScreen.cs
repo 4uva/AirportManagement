@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using AirportManagement.Data;
 namespace AirportManagement.Presentation
 {
-    class AirportPresentation
+    class AirportOnScreen
     {
-        public AirportPresentation()
+        public AirportOnScreen()
         {
         }
 
