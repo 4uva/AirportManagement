@@ -53,28 +53,31 @@ namespace AirportManagement
                         string indexOrSubstring = Console.ReadLine();
                         //проверяем или введенная строка не является число,
                         //переменная выхолит со значением, а вхдит не с чем
-                        if (int.TryParse(indexOrSubstring, out int index))//проверили строка или число
+                        if (int.TryParse(indexOrSubstring, out int index))
+                        //проверили строка или число
                         {
                             //проверяем, чтоб индекс был в списке
-                            if (index < filteredAirports.Count && index >= 0) ;
+                            if (index < filteredAirports.Count && index >= 0)
                             {
-                                Airport userSelectedAirport = filteredAirports[index];//ищем в списке по индексу
+                                Airport userSelectedAirport = filteredAirports[index];
                                 Console.WriteLine("Identified airport, " +
-                                    userSelectedAirport.Location.Name +
-                                    "enter d for delete or enter for cancel");//нашлиns  аропорт просим юзера удалилить или отменить операцию удаления
+                                userSelectedAirport.Location.Name +
+                                    "enter d for delete or enter for cancel");
+                                //нашлиns  аропорт просим юзера /
+                                //удалилить или отменить операцию удаления
                                 string deletion = Console.ReadLine();
-                                { // TODO: подумать, что дают эти скобки
-                                    if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
-                                    {
-                                        all.DeleteAirport(userchoice);// тут каша
-                                        Console.WriteLine(" Selected airport was sucessfully deleted");// сообщили об удалении
 
-                                    }
+                                // if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
+                                if (deletion == "d")
+                                {
+                                    all.DeleteAirport(userSelectedAirport);
+                                    Console.WriteLine(" Selected airport was sucessfully deleted");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Deletion canceled");
                                 }
                             }
-
-
-                            //   
                         }
                     }
                     //если индекса нет в списке выводим на экран
