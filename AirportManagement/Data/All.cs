@@ -26,12 +26,11 @@ namespace AirportManagement.Data
         }
 
         public  void DeleteAirport(Airport airport)
-       
         {   
             Airports.Remove(airport);
         }
+
         Airport CreateAirport(string locationName)
-        
         {
             var a = new Airport();//
             //1)мы присвоили переменной а значение нового аэропорта
