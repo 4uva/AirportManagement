@@ -77,23 +77,6 @@ namespace AirportManagement.BusinessLogic
                         }
                     }
                 }
-                //если индекса нет в списке выводим на экран
-                //НУЖНО ПРОПИСАТЬ УСЛОВИЕвыводим на экран  
-
-                Console.WriteLine("The airport index is  irrelevant  Please try again or cancel deletion");
-                //если аэропорта  нет в списке 
-                //НУЖНО ПРОПИСАТЬ УСЛОВИЕвыводим на экран
-                Console.WriteLine("Airport is not in a list. Please try again or cancel deletion");
-                //если аэропорт - в списке 
-                //выводим на экран  
-                Console.WriteLine("Identified airport Budapest, enter d for delete or enter for cancel");
-                string userInput = Console.ReadLine();//считываем ввод юзера и прописывес механизм удаления
-                Console.WriteLine("Deletion canceled");
-                Console.WriteLine("Enter a for add, b for edit, c for cancel, d for deleted");
-                Console.WriteLine("Enter part of airport's name");
-                string userInputSelected = Console.ReadLine();
-                Console.WriteLine("Identified airport Budapest, enter d for delete or enter for cancel");
-                Console.WriteLine("Airport Budapest successfully deleted ");
             }
             // 3 варианта:
             // 1) много аэропортов, выводим их все, теперь запрашиваем индекс или подстроку.
@@ -108,27 +91,6 @@ namespace AirportManagement.BusinessLogic
             //    и снова три варианта
             // 3) один аэропорт — он найден
 
-
-            //-> enter a for add, b for edit, c for cancel, d for delete
-            //<- d
-            //-> enter part of airport's name
-            //<- bu
-            //-> found airports:
-            //-> 1. Budapest
-            //-> 2. Bucharest
-            //-> enter a bigger part of airport's name or number in the list above
-            //-> 1
-            //-> Identified airport Budapest, enter d for delete or enter for cancel
-            //<- (enter)
-            //<- deletion canceled
-            //-> enter a for add, b for edit, c for cancel, d for delete
-            //<- d
-            //-> enter part of airport's name
-            //<- buda
-            //-> Identified airport Budapest, enter d for delete or enter for cancel
-            //<- d
-            //-> Airport Budapest successfully deleted
-
             if (userchoice == UserChoice.Irrelevant)
             {
                 //4) программа видит, что юзер выбрал добавить,
@@ -138,7 +100,8 @@ namespace AirportManagement.BusinessLogic
 
             if (userchoice == UserChoice.Cancel)
             {
-                break;
+                
+                StepResult.Exit;
             }
         }
 
