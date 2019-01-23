@@ -18,12 +18,9 @@ namespace AirportManagement
 
             MainLogic logic = new MainLogic(all);
             //заводим экземпляр бизнес логики вместо экземпляра меню
-            //почему подчеркнуто MainLogic
             while (true)
             {
                 StepResult result = logic.RunStep();
-                // почему подчеркнуто StepResult
-                //  почему HE подчеркнуто ogic.RunStep();
                 //вызываем у бизнес логики функцию 
                 //так мы раньше вызывали меню 
                 //и значение и присваиваем в переменную
