@@ -59,32 +59,7 @@ namespace AirportManagement.BusinessLogic
                 if (int.TryParse(indexOrSubstring, out int index))
                 //проверили строка или число
                 {
-                    //проверяем, чтоб индекс был в списке
-                    if (index < filteredAirports.Count && index >= 0)
-                    {
-                        Airport userSelectedAirport = filteredAirports[index];
-                        Console.WriteLine("Identified airport, " +
-                        userSelectedAirport.Location.Name +
-                            "enter d for delete or enter for cancel");
-                        //нашлиns  аропорт просим юзера /
-                        //удалилить или отменить операцию удаления
-                        string deletion = Console.ReadLine();
-
-                        // if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
-                        if (deletion == "d")
-                        {
-                            all.DeleteAirport(userSelectedAirport);
-                            Console.WriteLine(" Selected airport was sucessfully deleted");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Deletion canceled");
-                        }
-                    }
-                    else
-                    {
-                        throw new NotImplementedException("Case when index is out of range");
-                    }
+                    ProcessDeletebyIndex(index, filteredAirports );
                 }
                 else
                 {
@@ -103,7 +78,35 @@ namespace AirportManagement.BusinessLogic
                 throw new NotImplementedException("Case when list contains exactly one airport");
             }
         }
+        void ProcessDeletebyIndex(int index, List<Airport> filteredAirports)
+        {
+            //проверяем, чтоб индекс был в списке
+            if (index < filteredAirports.Count && index >= 0)
+            {
+                Airport userSelectedAirport = filteredAirports[index];
+                Console.WriteLine("Identified airport, " +
+                userSelectedAirport.Location.Name +
+                    "enter d for delete or enter for cancel");
+                //нашлиns  аропорт просим юзера /
+                //удалилить или отменить операцию удаления
+                string deletion = Console.ReadLine();
 
+                // if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
+                if (deletion == "d")
+                {
+                    all.DeleteAirport(userSelectedAirport);
+                    Console.WriteLine(" Selected airport was sucessfully deleted");
+                }
+                else
+                {
+                    Console.WriteLine("Deletion canceled");
+                }
+            }
+            else
+            {
+                throw new NotImplementedException("Case when index is out of range");
+            }
+        }
         void ProcessIrrelevant()
         {
             Console.WriteLine("Wrong choice. Please try again");
