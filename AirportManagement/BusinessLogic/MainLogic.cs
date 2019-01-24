@@ -29,9 +29,20 @@ namespace AirportManagement.BusinessLogic
             List<Airport> filteredAirports =
                 all.GetFilteredByPartialLocationAirports(airportPartialName);
 
+            // 3 варианта:
+
             //если длина списка больше 1
             if (filteredAirports.Count > 1)
             {
+                // 1) много аэропортов, выводим их все, теперь запрашиваем индекс или подстроку.
+                //    если получили индекс:
+                //      * если индекс подходит для списка, берём по индексу
+                //        аэропорт — он найден.
+                //      * если не подходит, пишем, что индекс неправильный,
+                //        и запрашиваем другую подстроку (как в пункте 2),
+                //        фильтруем по ней и снова три варианта
+                //    если подстроку, опять фильтруем по ней и три варианта
+
                 //если юзер выводим сообщение нашли такие аэропорты
                 Console.WriteLine("Found airports:");
                 //обращаемся к слою презентация и выводим аэропорты
@@ -70,21 +81,27 @@ namespace AirportManagement.BusinessLogic
                             Console.WriteLine("Deletion canceled");
                         }
                     }
+                    else
+                    {
+                        throw new NotImplementedException("Case when index is out of range");
+                    }
+                }
+                else
+                {
+                    throw new NotImplementedException("Case when user entered a new partial name");
                 }
             }
-
-            // 3 варианта:
-            // 1) много аэропортов, выводим их все, теперь запрашиваем индекс или подстроку.
-            //    если получили индекс:
-            //      * если индекс подходит для списка, берём по индексу
-            //        аэропорт — он найден.
-            //      * если не подходит, пишем, что индекс неправильный,
-            //        и запрашиваем другую подстроку (как в пункте 2),
-            //        фильтруем по ней и снова три варианта
-            //    если подстроку, опять фильтруем по ней и три варианта
-            // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
-            //    и снова три варианта
-            // 3) один аэропорт — он найден
+            else if (filteredAirports.Count == 0)
+            {
+                // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
+                //    и снова три варианта
+                throw new NotImplementedException("Case when list contains no airports");
+            }
+            else
+            {
+                // 3) один аэропорт — он найден
+                throw new NotImplementedException("Case when list contains exactly one airport");
+            }
         }
 
         void ProcessIrrelevant()
