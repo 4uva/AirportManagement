@@ -59,23 +59,43 @@ namespace AirportManagement.BusinessLogic
                 if (int.TryParse(indexOrSubstring, out int index))
                 //проверили строка или число
                 {
-                    ProcessDeletebyIndex(index, filteredAirports );
+                    ProcessDeletebyIndex(index, filteredAirports);
                 }
                 else
                 {
                     throw new NotImplementedException("Case when user entered a new partial name");
                 }
             }
-            else if (filteredAirports.Count == 0)
+            else if (filteredAirports.Count == 0) 
             {
                 // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
                 //    и снова три варианта
                 throw new NotImplementedException("Case when list contains no airports");
             }
-            else
+            else 
             {
                 // 3) один аэропорт — он найден
-                throw new NotImplementedException("Case when list contains exactly one airport");
+                ProcessDeleteAirport(filteredAirports [0]);
+            }
+        }
+        void ProcessDeleteAirport(Airport airport)//1 is here
+        {
+            Console.WriteLine("Identified airport, " +
+                airport.Location.Name +
+                    "enter d for delete or enter for cancel");
+            //нашлиns  аропорт просим юзера /
+            //удалилить или отменить операцию удаления
+            string deletion = Console.ReadLine();
+
+            // if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
+            if (deletion == "d")
+            {
+                all.DeleteAirport(airport);
+                Console.WriteLine(" Selected airport was sucessfully deleted");
+            }
+            else
+            {
+                Console.WriteLine("Deletion canceled");
             }
         }
         void ProcessDeletebyIndex(int index, List<Airport> filteredAirports)
@@ -84,23 +104,7 @@ namespace AirportManagement.BusinessLogic
             if (index < filteredAirports.Count && index >= 0)
             {
                 Airport userSelectedAirport = filteredAirports[index];
-                Console.WriteLine("Identified airport, " +
-                userSelectedAirport.Location.Name +
-                    "enter d for delete or enter for cancel");
-                //нашлиns  аропорт просим юзера /
-                //удалилить или отменить операцию удаления
-                string deletion = Console.ReadLine();
-
-                // if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
-                if (deletion == "d")
-                {
-                    all.DeleteAirport(userSelectedAirport);
-                    Console.WriteLine(" Selected airport was sucessfully deleted");
-                }
-                else
-                {
-                    Console.WriteLine("Deletion canceled");
-                }
+                ProcessDeleteAirport(userSelectedAirport);
             }
             else
             {
