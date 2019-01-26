@@ -12,7 +12,7 @@ namespace AirportManagement.Presentation
         public void Output(List<Airport> Airports)
         {
             string Header = "Airports";
-            Console.WriteLine(Header);
+            Console.WriteLine(Header);//TODO - remove header
 
             foreach (Airport value in Airports)// in every type element value in variable 
             {
