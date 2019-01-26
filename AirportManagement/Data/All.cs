@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AirportManagement.Data
@@ -58,7 +59,10 @@ namespace AirportManagement.Data
 
         public List<Airport> GetFilteredByPartialLocationAirports(string partialLocation)
         {
-            throw new NotImplementedException();
+            return Airports
+                .Where(a => a.Location.Name.Contains(partialLocation, StringComparison.InvariantCultureIgnoreCase))
+                .OrderBy(a => a.Location.Name)
+                .ToList();
         }
 
         public List<Airport> Airports { get; set; }
