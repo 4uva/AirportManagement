@@ -41,10 +41,10 @@ namespace AirportManagement.Presentation
                     return UserChoice.Update;
 
                 case c:
-                    return UserChoice.Delete;
+                    return UserChoice.Cancel;
 
                 case d:
-                    return UserChoice.Cancel;
+                    return UserChoice.Delete;
 
                 default:
                     return UserChoice.Irrelevant;
