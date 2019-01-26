@@ -25,12 +25,32 @@ namespace AirportManagement.BusinessLogic
             Console.WriteLine("Enter part of airport's name");
             //читаем ввод
             string airportPartialName = Console.ReadLine();
+            // после прочтения может не создать список в строке 30
             //создаем список аэропортов на основе вызова функции фильтрации
             List<Airport> filteredAirports =
                 all.GetFilteredByPartialLocationAirports(airportPartialName);
 
-            // 3 варианта:
+            // a) список аэропортов не обновляется в цикле, из-за чего выводится каждый раз одно и то же
+            // b)проверить вывод отсортированого списка
+            // c) с выводом одного аэропорта по идее проблем быть не должно
 
+            // 3 варианта:
+            while (filteredAirports.Count > 1)
+            {
+                Console.WriteLine("Found airports:");//НУЖНО ПОВТОРЯТЬ
+                airportPresentation.Output(filteredAirports);//НУЖНО ПОВТОРЯТЬ                                                
+                Console.WriteLine("Enter a bigger part of airport's name " +
+                     "or number in the list above");//НУЖНО ПОВТОРЯТЬ
+                string indexOrSubstring = Console.ReadLine();
+
+                //проверяем или введенная строка не является число,
+                //переменная выхолит со значением, а вхдит не с чем
+                if (int.TryParse(indexOrSubstring, out int index))
+                //проверили строка или число
+                {
+                    ProcessDeletebyIndex(index, filteredAirports);
+                }
+            }
             //если длина списка больше 1
             if (filteredAirports.Count > 1)
             {
@@ -44,12 +64,12 @@ namespace AirportManagement.BusinessLogic
                 //    если подстроку, опять фильтруем по ней и три варианта
 
                 //если юзер выводим сообщение нашли такие аэропорты
-                Console.WriteLine("Found airports:");
+                Console.WriteLine("Found airports:");//НУЖНО ПОВТОРЯТЬ
                 //обращаемся к слою презентация и выводим аэропорты
-                airportPresentation.Output(filteredAirports);
+                airportPresentation.Output(filteredAirports);//НУЖНО ПОВТОРЯТЬ
                 //просим ввести больше букв или номер аэропорта в списке
                 Console.WriteLine("Enter a bigger part of airport's name " +
-                    "or number in the list above");
+                    "or number in the list above");//НУЖНО ПОВТОРЯТЬ
 
                 //читаем ввод юзера и записываем переменную строку
                 string indexOrSubstring = Console.ReadLine();
@@ -66,18 +86,19 @@ namespace AirportManagement.BusinessLogic
                     throw new NotImplementedException("Case when user entered a new partial name");
                 }
             }
-            else if (filteredAirports.Count == 0) 
+            else if (filteredAirports.Count == 0)
             {
                 // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
                 //    и снова три варианта
                 throw new NotImplementedException("Case when list contains no airports");
             }
-            else 
+            else
             {
                 // 3) один аэропорт — он найден
-                ProcessDeleteAirport(filteredAirports [0]);
+                ProcessDeleteAirport(filteredAirports[0]);
             }
         }
+
         void ProcessDeleteAirport(Airport airport)//1 is here
         {
             Console.WriteLine("Identified airport, " +
@@ -98,6 +119,7 @@ namespace AirportManagement.BusinessLogic
                 Console.WriteLine("Deletion canceled");
             }
         }
+
         void ProcessDeletebyIndex(int index, List<Airport> filteredAirports)
         {
             //проверяем, чтоб индекс был в списке
@@ -111,6 +133,7 @@ namespace AirportManagement.BusinessLogic
                 throw new NotImplementedException("Case when index is out of range");
             }
         }
+
         void ProcessIrrelevant()
         {
             Console.WriteLine("Wrong choice. Please try again");
