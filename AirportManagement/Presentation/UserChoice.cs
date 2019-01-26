@@ -8,7 +8,6 @@ namespace AirportManagement.Presentation
         Update,
         Delete,
         Cancel,
-
         Irrelevant
     }
 }
