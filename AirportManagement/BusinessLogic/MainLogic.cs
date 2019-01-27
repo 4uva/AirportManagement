@@ -50,42 +50,12 @@ namespace AirportManagement.BusinessLogic
                 {
                     ProcessDeletebyIndex(index, filteredAirports);
                 }
-            }
-            //если длина списка больше 1
-            if (filteredAirports.Count > 1)
-            {
-                // 1) много аэропортов, выводим их все, теперь запрашиваем индекс или подстроку.
-                //    если получили индекс:
-                //      * если индекс подходит для списка, берём по индексу
-                //        аэропорт — он найден.
-                //      * если не подходит, пишем, что индекс неправильный,
-                //        и запрашиваем другую подстроку (как в пункте 2),
-                //        фильтруем по ней и снова три варианта
-                //    если подстроку, опять фильтруем по ней и три варианта
-
-                //если юзер выводим сообщение нашли такие аэропорты
-                Console.WriteLine("Found airports:");//НУЖНО ПОВТОРЯТЬ
-                //обращаемся к слою презентация и выводим аэропорты
-                airportPresentation.Output(filteredAirports);//НУЖНО ПОВТОРЯТЬ
-                //просим ввести больше букв или номер аэропорта в списке
-                Console.WriteLine("Enter a bigger part of airport's name " +
-                    "or number in the list above");//НУЖНО ПОВТОРЯТЬ
-
-                //читаем ввод юзера и записываем переменную строку
-                string indexOrSubstring = Console.ReadLine();
-
-                //проверяем или введенная строка не является число,
-                //переменная выхолит со значением, а вхдит не с чем
-                if (int.TryParse(indexOrSubstring, out int index))
-                //проверили строка или число
-                {
-                    ProcessDeletebyIndex(index, filteredAirports);
-                }
                 else
                 {
-                    throw new NotImplementedException("Case when user entered a new partial name");
+                    all.GetFilteredByPartialLocationAirports(airportPartialName);
                 }
             }
+           
             else if (filteredAirports.Count == 0)
             {
                 // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
