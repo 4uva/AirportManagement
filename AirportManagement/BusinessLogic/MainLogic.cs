@@ -52,11 +52,11 @@ namespace AirportManagement.BusinessLogic
                 }
                 else
                 {
-                   filteredAirports= all.GetFilteredByPartialLocationAirports(indexOrSubstring);
+                    filteredAirports = all.GetFilteredByPartialLocationAirports(indexOrSubstring);
                 }
             }
-           
-             if (filteredAirports.Count == 0)
+
+            if (filteredAirports.Count == 0)
             {
                 // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
                 //    и снова три варианта
@@ -73,7 +73,7 @@ namespace AirportManagement.BusinessLogic
         {
             Console.WriteLine("Identified airport, " +
                 airport.Location.Name);
-                Console.WriteLine("enter d for delete or enter for cancel");
+            Console.WriteLine("enter d for delete or enter for cancel");
             //нашлиns  аропорт просим юзера /
             //удалилить или отменить операцию удаления
             string deletion = Console.ReadLine();
