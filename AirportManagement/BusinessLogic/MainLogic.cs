@@ -72,8 +72,8 @@ namespace AirportManagement.BusinessLogic
         void ProcessDeleteAirport(Airport airport)//1 is here
         {
             Console.WriteLine("Identified airport, " +
-                airport.Location.Name +
-                    "enter d for delete or enter for cancel");
+                airport.Location.Name);
+                Console.WriteLine("enter d for delete or enter for cancel");
             //нашлиns  аропорт просим юзера /
             //удалилить или отменить операцию удаления
             string deletion = Console.ReadLine();
