@@ -55,6 +55,9 @@ namespace AirportManagement.Data
             AddAirport("Elabuga");
             AddAirport("Gatwick");
             AddAirport("Innsbruk");
+            AddAirport("Budapest");
+            AddAirport("Bucharest");
+            AddAirport("Buchara");
         }
 
         public List<Airport> GetFilteredByPartialLocationAirports(string partialLocation)
