@@ -11,9 +11,6 @@ namespace AirportManagement.Presentation
 
         public void Output(List<Airport> Airports)
         {
-            string Header = "Airports";
-            Console.WriteLine(Header);//TODO - remove header
-
             foreach (Airport value in Airports)// in every type element value in variable 
             {
                 Output(value);// 
@@ -26,7 +23,7 @@ namespace AirportManagement.Presentation
             var b = a.Name;//можно закомментировать
             Console.WriteLine(b);//Console.WriteLine(airport.Location.Name) or `a.Name`,
         }
-        
+
         //public string AirportDatabaseCreation(string UserInput2)
         //{
         //    Console.WriteLine("Please add airport name");
