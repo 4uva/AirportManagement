@@ -52,11 +52,11 @@ namespace AirportManagement.BusinessLogic
                 }
                 else
                 {
-                    all.GetFilteredByPartialLocationAirports(airportPartialName);
+                   filteredAirports= all.GetFilteredByPartialLocationAirports(indexOrSubstring);
                 }
             }
            
-            else if (filteredAirports.Count == 0)
+             if (filteredAirports.Count == 0)
             {
                 // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
                 //    и снова три варианта
