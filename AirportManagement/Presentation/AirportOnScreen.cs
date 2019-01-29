@@ -26,27 +26,14 @@ namespace AirportManagement.Presentation
         public void OutputIndexed(List<Airport> Airports)
         {
             {
-                for (int i = 0; i < Airports.Count - 1; i++)// in every type element value in variable 
+                for (int index = 0; index < Airports.Count; index++)// non idioma - for (int index = 0; index <=Airports.Count -1; index++
                 {
-                    int[] index = Airports.Count - 1;//x-y+1
-
-                    /* for (int i = 0; i < 991; i++)
-                     {
-                         int c = i + 10;
-                         a[i] = c;
-                     }*/
-                    /* for (int c = 10; c <= 1000; c++)
-                    {
-                        int i = c - 10;
-                        a[i] = c;
-                    }*/
+                    Console.WriteLine (index); 
+                    Airport airport = Airports[index];
                 }
             }
 
         }
-        //public string AirportDatabaseCreation(string UserInput2)
-        //{
-        //    Console.WriteLine("Please add airport name");
-        //}
+        
     }
 }
