@@ -38,11 +38,11 @@ namespace AirportManagement.BusinessLogic
             while (filteredAirports.Count > 1)
             {
                 Console.WriteLine("Found airports:");//НУЖНО ПОВТОРЯТЬ
-                airportPresentation.Output(filteredAirports);//НУЖНО ПОВТОРЯТЬ                                                
+                airportPresentation.OutputIndexed(filteredAirports);//НУЖНО ПОВТОРЯТЬ                                                
                 Console.WriteLine("Enter a bigger part of airport's name " +
                      "or number in the list above");//НУЖНО ПОВТОРЯТЬ
                 string indexOrSubstring = Console.ReadLine();
-
+                
                 //проверяем или введенная строка не является число,
                 //переменная выхолит со значением, а вхдит не с чем
                 if (int.TryParse(indexOrSubstring, out int index))
