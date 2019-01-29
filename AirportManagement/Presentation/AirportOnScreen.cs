@@ -28,7 +28,7 @@ namespace AirportManagement.Presentation
             {
                 for (int index = 0; index < Airports.Count; index++)// non idioma - for (int index = 0; index <=Airports.Count -1; index++
                 {
-                    Console.WriteLine (Airports); 
+                    Console.WriteLine (all.Location.Name); 
                     Airport airport = Airports[index];
                     //Console.WriteLine($"{a} * {b} = {a * b}");
                 }
