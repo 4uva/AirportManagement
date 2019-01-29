@@ -13,16 +13,6 @@ namespace AirportManagement
     {
         static void Main(string[] args)
         {
-            List<int> numbers = new List<int>() { 1, -1, 5, 8, 2 };
-
-            foreach (int number in numbers)
-            { 
-                if (number > 3)
-                Console.WriteLine (number);
-            }
-
-            
-
             // Constructor invocation for this object is not relevant anymore
             All all = WriterReader.Read();//создаем экземпляр класса
 
