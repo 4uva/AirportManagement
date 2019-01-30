@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using AirportManagement.Data;
 using AirportManagement.Presentation;
+
 namespace AirportManagement.BusinessLogic
 {
     class MainLogic
@@ -22,7 +23,7 @@ namespace AirportManagement.BusinessLogic
         void ProcessDelete()
         {
             //просим ввести аэропорт частично
-            Console.WriteLine("Enter part of airport's name");
+             Console.WriteLine("Enter part of airport's name");
             //читаем ввод
             string airportPartialName = Console.ReadLine();
             // после прочтения может не создать список в строке 30
@@ -42,13 +43,14 @@ namespace AirportManagement.BusinessLogic
                 Console.WriteLine("Enter a bigger part of airport's name " +
                      "or number in the list above");//НУЖНО ПОВТОРЯТЬ
                 string indexOrSubstring = Console.ReadLine();
-                
+
                 //проверяем или введенная строка не является число,
                 //переменная выхолит со значением, а вхдит не с чем
                 if (int.TryParse(indexOrSubstring, out int index))
                 //проверили строка или число
                 {
-                    ProcessDeletebyIndex(index-1, filteredAirports);
+                    ProcessDeletebyIndex(index - 1, filteredAirports);
+                    return;
                 }
                 else
                 {
