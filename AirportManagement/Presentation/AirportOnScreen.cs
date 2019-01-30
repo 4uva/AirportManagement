@@ -25,16 +25,12 @@ namespace AirportManagement.Presentation
         }
         public void OutputIndexed(List<Airport> Airports)
         {
-            {
-                for (int index = 0; index < Airports.Count; index++)// non idioma - for (int index = 0; index <=Airports.Count -1; index++
-                {     
-                    Airport airport = Airports[index];
-                    Console.WriteLine ($"{index+1}. {airport.Location.Name}"); 
-                   
-                }
+            // non idiomatic - for (int index = 0; index <= Airports.Count -1; index++)
+            for (int index = 0; index < Airports.Count; index++)
+            {     
+                Airport airport = Airports[index];
+                Console.WriteLine ($"{index+1}. {airport.Location.Name}"); 
             }
-
         }
-        
     }
 }
