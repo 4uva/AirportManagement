@@ -48,7 +48,7 @@ namespace AirportManagement.BusinessLogic
                 if (int.TryParse(indexOrSubstring, out int index))
                 //проверили строка или число
                 {
-                    ProcessDeletebyIndex(index, filteredAirports);
+                    ProcessDeletebyIndex(index-1, filteredAirports);
                 }
                 else
                 {
