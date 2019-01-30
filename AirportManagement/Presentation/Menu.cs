@@ -4,10 +4,15 @@ namespace AirportManagement.Presentation
 {
     class Menu
     {
+        public void DisplayGreeting()
+        {
+            Console.WriteLine("Hi! This is admin panel");
+        }
+        
         public void DisplayPrompt()
         {
             Console.WriteLine(
-              "Hi! This is admin panel. You could  " +
+              " You could  " +
               "add airport - press a, " +
               " update - b, " +
               "delete - d, " + "to cancel operation -c " +
@@ -54,8 +59,8 @@ namespace AirportManagement.Presentation
         public UserChoice Run()
         {
             DisplayPrompt();
-            string UserInput = Console.ReadLine();
-            UserChoice userChoice = IdentifyInput(UserInput);
+            string UserInput = Console.ReadLine();//вот завели переменную
+            UserChoice userChoice = IdentifyInput(UserInput);//вот положили ее в параметр
             return userChoice;
         }
     }
