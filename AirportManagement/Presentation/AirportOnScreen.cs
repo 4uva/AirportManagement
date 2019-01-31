@@ -8,10 +8,14 @@ namespace AirportManagement.Presentation
         public AirportOnScreen()
         {
         }
+        
         public void HeaderOutput()
         {
+           
+            Console.WriteLine(" Please look at airport list below");
             Console.WriteLine("Airports");
         }
+
         public void Output(List<Airport> Airports)
         {
             foreach (Airport value in Airports)// in every type element value in variable 
@@ -26,13 +30,14 @@ namespace AirportManagement.Presentation
             var b = a.Name;//можно закомментировать
             Console.WriteLine(b);//Console.WriteLine(airport.Location.Name) or `a.Name`,
         }
+
         public void OutputIndexed(List<Airport> Airports)
         {
             // non idiomatic - for (int index = 0; index <= Airports.Count -1; index++)
             for (int index = 0; index < Airports.Count; index++)
-            {     
+            {
                 Airport airport = Airports[index];
-                Console.WriteLine ($"{index+1}. {airport.Location.Name}"); 
+                Console.WriteLine($"{index + 1}. {airport.Location.Name}");
             }
         }
     }
