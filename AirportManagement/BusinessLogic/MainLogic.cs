@@ -39,7 +39,7 @@ namespace AirportManagement.BusinessLogic
             while (filteredAirports.Count > 1)
             {
                 Console.WriteLine("Found airports:");//НУЖНО ПОВТОРЯТЬ
-                airportPresentation.OutputIndexed(filteredAirports);//НУЖНО ПОВТОРЯТЬ                                                
+                airportOnScreen.OutputIndexed(filteredAirports);//НУЖНО ПОВТОРЯТЬ                                                
                 Console.WriteLine("Enter a bigger part of airport's name " +
                      "or number in the list above");//НУЖНО ПОВТОРЯТЬ
                 string indexOrSubstring = Console.ReadLine();
@@ -113,6 +113,8 @@ namespace AirportManagement.BusinessLogic
 
         public StepResult RunStep()
         {
+            // Airports
+            airportOnScreen.Output( all.Airports);
             UserChoice userchoice = menu.Run();
             //это дублирующая логика только для слоя презентации 
             if (userchoice == UserChoice.Add)
@@ -132,7 +134,7 @@ namespace AirportManagement.BusinessLogic
         }
 
         //это поле, которое инициализируется ссылкой на экземпляр объекта
-        private AirportOnScreen airportPresentation = new AirportOnScreen();
+        private AirportOnScreen airportOnScreen = new AirportOnScreen();
         private Menu menu = new Menu();
         private All all;
     }
