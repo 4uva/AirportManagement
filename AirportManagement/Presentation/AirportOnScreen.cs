@@ -11,8 +11,7 @@ namespace AirportManagement.Presentation
         
         public void HeaderOutput()
         {
-           
-            Console.WriteLine(" Please look at airport list below");
+            Console.WriteLine("Please look at airport list below");
             Console.WriteLine("Airports");
         }
 
