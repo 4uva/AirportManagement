@@ -103,7 +103,27 @@ namespace AirportManagement.BusinessLogic
             }
             else
             {
-                throw new NotImplementedException("Case when index is out of range");
+                while (index > filteredAirports.Count)
+                {
+                                                                    
+                    Console.WriteLine("Enter a bigger part of airport's name " +
+                         "or number in the list above");//НУЖНО ПОВТОРЯТЬ
+                        string indexOrSubstring = Console.ReadLine();
+                    if (int.TryParse(indexOrSubstring, out  index  ))
+                    {
+                        ProcessDeletebyIndex(index - 1, filteredAirports);
+                        return;
+                    }
+
+                      
+                    Console.WriteLine("Wrong choice. Please Enter a bigger part of airport's name " +
+                        "or number in the list above");
+                    //проверяем или введенная строка не является число,
+                    //переменная выхолит со значением, а вхдит не с чем
+                  
+                    //проверили строка или число
+                    
+                }
             }
         }
 
