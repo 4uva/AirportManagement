@@ -114,6 +114,7 @@ namespace AirportManagement.BusinessLogic
         public StepResult RunStep()
         {
             // Airports
+            airportOnScreen.HeaderOutput();
             airportOnScreen.Output( all.Airports);
             UserChoice userchoice = menu.Run();
             //это дублирующая логика только для слоя презентации 
