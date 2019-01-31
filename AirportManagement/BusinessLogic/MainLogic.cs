@@ -11,8 +11,9 @@ namespace AirportManagement.BusinessLogic
         public MainLogic(All all)
         {
             this.all = all;
+            menu.DisplayGreeting();
         }
-
+        
         void ProcessAdd()
         {
             Console.WriteLine("Please add an Airport");
