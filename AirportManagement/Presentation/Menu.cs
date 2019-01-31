@@ -6,7 +6,7 @@ namespace AirportManagement.Presentation
     {
         public void DisplayGreeting()
         {
-            Console.WriteLine("Hi! This is admin panel");
+            Console.WriteLine("Hi! This is admin panel. ");            
         }
         
         public void DisplayPrompt()
@@ -21,7 +21,6 @@ namespace AirportManagement.Presentation
         }
 
         public UserChoice IdentifyInput(string UserInput)//вот откуда эта 
-                                                         //функция берет значение UserInput
         {
             const string a = "a";
             const string b = "b";
@@ -65,4 +64,3 @@ namespace AirportManagement.Presentation
         }
     }
 }
-
