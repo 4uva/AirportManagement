@@ -37,13 +37,22 @@ namespace AirportManagement.BusinessLogic
             // c) с выводом одного аэропорта по идее проблем быть не должно
 
             // 3 варианта:
-            while (filteredAirports.Count > 1)
+            // while (filteredAirports.Count == 0)
+            while (filteredAirports.Count !=1 )
             {
-                Console.WriteLine("Found airports:");//НУЖНО ПОВТОРЯТЬ
-                airportOnScreen.OutputIndexed(filteredAirports);//НУЖНО ПОВТОРЯТЬ                                                
-                Console.WriteLine("Enter a bigger part of airport's name " +
-                     "or number in the list above");//НУЖНО ПОВТОРЯТЬ
+                if (filteredAirports.Count == 0)
+                    Console.WriteLine("Found no airports. Please enter another part of airport name.");
+                else
+
+                    Console.WriteLine("Enter a bigger part of airport's name ");// ---
+                airportOnScreen.OutputIndexed(filteredAirports);
                 string indexOrSubstring = Console.ReadLine();
+                Console.WriteLine("Please enter a bigger part of airport's name " +
+                    "or number in the list above");
+
+                
+
+
 
                 //проверяем или введенная строка не является число,
                 //переменная выхолит со значением, а вхдит не с чем
