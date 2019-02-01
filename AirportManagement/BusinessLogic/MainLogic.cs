@@ -93,6 +93,24 @@ namespace AirportManagement.BusinessLogic
             }
         }
 
+        void ProcessDeletebyIndex2(int index, List<Airport> filteredAirports)
+        {
+            while (!(index < filteredAirports.Count && index >= 0)) // until in range
+            {
+                Console.WriteLine("Index is out of range, please correct");
+                while (true) // until number is entered
+                {
+                    string indexString = Console.ReadLine();
+                    if (int.TryParse(indexString, out index))
+                        break;
+                    Console.WriteLine("Please input number");
+                }
+                index--; // adjust 1-based to 0-based
+            }
+            Airport userSelectedAirport = filteredAirports[index];
+            ProcessDeleteAirport(userSelectedAirport);
+        }
+
         void ProcessDeletebyIndex(int index, List<Airport> filteredAirports)
         {
             //проверяем, чтоб индекс был в списке
@@ -103,7 +121,7 @@ namespace AirportManagement.BusinessLogic
             }
             else
             {
-                while (index > filteredAirports.Count)
+                while (index >= filteredAirports.Count)
                 {
                                                                     
                     Console.WriteLine("Enter a bigger part of airport's name " +
