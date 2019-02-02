@@ -13,7 +13,7 @@ namespace AirportManagement.BusinessLogic
             this.all = all;
             menu.DisplayGreeting();
         }
-        
+
         void ProcessAdd()
         {
             Console.WriteLine("Please add an Airport");
@@ -24,7 +24,7 @@ namespace AirportManagement.BusinessLogic
         void ProcessDelete()
         {
             //просим ввести аэропорт частично
-             Console.WriteLine("Enter part of airport's name");
+            Console.WriteLine("Enter part of airport's name");
             //читаем ввод
             string airportPartialName = Console.ReadLine();
             // после прочтения может не создать список в строке 30
@@ -36,22 +36,43 @@ namespace AirportManagement.BusinessLogic
             // b)проверить вывод отсортированого списка
             // c) с выводом одного аэропорта по идее проблем быть не должно
 
+            // -> enter part of airport's name- СТРОКА 27
+            // <- bu -
+            // == START OF A LOOP
+            // -> found airports:
+            // -> 1. Budapest
+            // -> 2. Bucharest
+            // -> 3. Buchara
+            // -> enter a bigger part of airport's name or number in the list above
+            // <- xyz
+            // == END OF ITERATION, START OF THE NEXT ITERATION
+            // -> no airports found, enter another part of airport's name
+            // <- buch
+            // == END OF ITERATION, START OF THE NEXT ITERATION
+            // -> found airports:
+            // -> 1. Bucharest
+            // -> 2. Buchara
+            // -> enter a bigger part of airport's name or number in the list above
+            // <- buchare
+            // == END OF ITERATION, END OF LOOP
+            // -> identified airport Bucharest
+
             // 3 варианта:
-            // while (filteredAirports.Count == 0)
-            while (filteredAirports.Count !=1 )
+
+            while (filteredAirports.Count != 1) // 42-45th lines 
             {
-                if (filteredAirports.Count == 0)
-                    Console.WriteLine("Found no airports. Please enter another part of airport name.");
+                if (filteredAirports.Count == 0)// 49th lines  
+                    Console.WriteLine("Found no airports. Please enter another part of airport name.");//49th lines 
+
                 else
+                {
+                    airportOnScreen.OutputIndexed(filteredAirports);//48th lines
+                    Console.WriteLine("Enter a bigger part of airport's name or number in the list above ");
+                }
+                // 46 line---
+                string indexOrSubstring = Console.ReadLine();//50th lines 
 
-                    Console.WriteLine("Enter a bigger part of airport's name ");// ---
-                airportOnScreen.OutputIndexed(filteredAirports);
-                string indexOrSubstring = Console.ReadLine();
-                Console.WriteLine("Please enter a bigger part of airport's name " +
-                    "or number in the list above");
-
-                
-
+                //46th lines 
 
 
                 //проверяем или введенная строка не является число,
@@ -85,10 +106,10 @@ namespace AirportManagement.BusinessLogic
         {
             Console.WriteLine("Identified airport, " +
                 airport.Location.Name);
-            Console.WriteLine("enter d for delete or enter for cancel");
+            Console.WriteLine("enter d for delete or enter for cancel");//57th line
             //нашлиns  аропорт просим юзера /
             //удалилить или отменить операцию удаления
-            string deletion = Console.ReadLine();
+            string deletion = Console.ReadLine();//58th line
 
             // if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
             if (deletion == "d")
@@ -132,24 +153,24 @@ namespace AirportManagement.BusinessLogic
             {
                 while (index >= filteredAirports.Count)
                 {
-                                                                    
+
                     Console.WriteLine("Enter a bigger part of airport's name " +
                          "or number in the list above");//НУЖНО ПОВТОРЯТЬ
-                        string indexOrSubstring = Console.ReadLine();
-                    if (int.TryParse(indexOrSubstring, out  index  ))
+                    string indexOrSubstring = Console.ReadLine();
+                    if (int.TryParse(indexOrSubstring, out index))
                     {
                         ProcessDeletebyIndex(index - 1, filteredAirports);
                         return;
                     }
 
-                      
+
                     Console.WriteLine("Wrong choice. Please Enter a bigger part of airport's name " +
                         "or number in the list above");
                     //проверяем или введенная строка не является число,
                     //переменная выхолит со значением, а вхдит не с чем
-                  
+
                     //проверили строка или число
-                    
+
                 }
             }
         }
@@ -163,7 +184,7 @@ namespace AirportManagement.BusinessLogic
         {
             // Airports
             airportOnScreen.HeaderOutput();
-            airportOnScreen.Output( all.Airports);
+            airportOnScreen.Output(all.Airports);
             UserChoice userchoice = menu.Run();
             //это дублирующая логика только для слоя презентации 
             if (userchoice == UserChoice.Add)
