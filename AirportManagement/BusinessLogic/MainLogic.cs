@@ -36,52 +36,33 @@ namespace AirportManagement.BusinessLogic
             // b)проверить вывод отсортированого списка
             // c) с выводом одного аэропорта по идее проблем быть не должно
 
-            // -> enter part of airport's name- СТРОКА 27
-            // <- bu -
-            // == START OF A LOOP
-            // -> found airports:
-            // -> 1. Budapest
-            // -> 2. Bucharest
-            // -> 3. Buchara
-            // -> enter a bigger part of airport's name or number in the list above
-            // <- xyz
-            // == END OF ITERATION, START OF THE NEXT ITERATION
-            // -> no airports found, enter another part of airport's name
-            // <- buch
-            // == END OF ITERATION, START OF THE NEXT ITERATION
-            // -> found airports:
-            // -> 1. Bucharest
-            // -> 2. Buchara
-            // -> enter a bigger part of airport's name or number in the list above
-            // <- buchare
-            // == END OF ITERATION, END OF LOOP
-            // -> identified airport Bucharest
-
-            // 3 варианта:
-
-            while (filteredAirports.Count != 1) // 42-45th lines 
+            while (filteredAirports.Count != 1)
             {
-                if (filteredAirports.Count == 0)// 49th lines  
+                if (filteredAirports.Count == 0)
                     Console.WriteLine("Found no airports. Please enter another part of airport name.");//49th lines 
-
                 else
                 {
-                    airportOnScreen.OutputIndexed(filteredAirports);//48th lines
+                    airportOnScreen.OutputIndexed(filteredAirports);
                     Console.WriteLine("Enter a bigger part of airport's name or number in the list above ");
                 }
-                // 46 line---
-                string indexOrSubstring = Console.ReadLine();//50th lines 
 
-                //46th lines 
-
+                string indexOrSubstring = Console.ReadLine();
 
                 //проверяем или введенная строка не является число,
                 //переменная выхолит со значением, а вхдит не с чем
                 if (int.TryParse(indexOrSubstring, out int index))
-                //проверили строка или число
                 {
-                    ProcessDeletebyIndex(index - 1, filteredAirports);
-                    return;
+                    //partial name returns many airports
+                    if (filteredAirports.Count > 1)
+                    {
+                        //delete airport by index
+                        ProcessDeletebyIndex(index - 1, filteredAirports);
+                        return; 
+                    }
+                    else//user put an index in a big list
+                    {
+                        filteredAirports = all.GetFilteredByPartialLocationAirports(indexOrSubstring);//on screen filtred list
+                    }
                 }
                 else
                 {
@@ -89,29 +70,18 @@ namespace AirportManagement.BusinessLogic
                 }
             }
 
-            if (filteredAirports.Count == 0)
-            {
-                // 2) ноль аэропортов. запрашиваем другую подстроку, фильтруем по ней
-                //    и снова три варианта
-                throw new NotImplementedException("Case when list contains no airports");
-            }
-            else
-            {
-                // 3) один аэропорт — он найден
-                ProcessDeleteAirport(filteredAirports[0]);
-            }
+            ProcessDeleteAirport(filteredAirports[0]);
         }
 
         void ProcessDeleteAirport(Airport airport)//1 is here
         {
-            Console.WriteLine("Identified airport, " +
-                airport.Location.Name);
-            Console.WriteLine("enter d for delete or enter for cancel");//57th line
+            Console.WriteLine("Identified airport, " + airport.Location.Name);
+            Console.WriteLine("enter d for delete or enter for cancel");
             //нашлиns  аропорт просим юзера /
             //удалилить или отменить операцию удаления
-            string deletion = Console.ReadLine();//58th line
+            string deletion = Console.ReadLine();
 
-            // if (userchoice == UserChoice.Delete)//если юзер выбрал удалить
+            //если юзер выбрал удалить
             if (deletion == "d")
             {
                 all.DeleteAirport(airport);
@@ -163,14 +133,8 @@ namespace AirportManagement.BusinessLogic
                         return;
                     }
 
-
                     Console.WriteLine("Wrong choice. Please Enter a bigger part of airport's name " +
                         "or number in the list above");
-                    //проверяем или введенная строка не является число,
-                    //переменная выхолит со значением, а вхдит не с чем
-
-                    //проверили строка или число
-
                 }
             }
         }
