@@ -35,7 +35,6 @@ namespace AirportManagement.BusinessLogic
             // a) список аэропортов не обновляется в цикле, из-за чего выводится каждый раз одно и то же
             // b)проверить вывод отсортированого списка
             // c) с выводом одного аэропорта по идее проблем быть не должно
-
             while (filteredAirports.Count != 1)
             {
                 if (filteredAirports.Count == 0)
@@ -52,14 +51,34 @@ namespace AirportManagement.BusinessLogic
                 //переменная выхолит со значением, а вхдит не с чем
                 if (int.TryParse(indexOrSubstring, out int index))
                 {
-                    //partial name returns many airports
+                    // this checks if we have a list size >1 or empty list
+                    // only for the case of list size > 1 we consider numeric input
+                    // as index
                     if (filteredAirports.Count > 1)
                     {
-                        //delete airport by index
-                        ProcessDeletebyIndex(index - 1, filteredAirports);
-                        return; 
+                        // so we have list size > 1, checking now if index fits into
+                        // list index range
+                        // now try to delete airport by index
+                        //1.сначала нужно проверить индекс, входит ли он
+                        //  в диапазон индексов списка (хороший) или
+                        //  нет (плохой)
+                        if (index < filteredAirports.Count && index >= 0)
+                        {
+                            //1a.если он хороший, то вызываем ProcessDeleteAirport
+                            //   (код можно стащить в закомментированных функциях)
+                            //   и выходим
+                            Airport userSelectedAirport = filteredAirports[index];
+                            ProcessDeleteAirport(userSelectedAirport);
+                            return;
+                        }
+                        else
+                        {
+                            //1b.если он плохой, ругаемся и идём на следующую итерацию
+                            Console.WriteLine("Wrong choice. There is no airports enlisted " +
+                             "Please try again.");
+                        }
                     }
-                    else//user put an index in a big list
+                    else // for the case of empty list we don't consider index
                     {
                         filteredAirports = all.GetFilteredByPartialLocationAirports(indexOrSubstring);//on screen filtred list
                     }
@@ -90,52 +109,6 @@ namespace AirportManagement.BusinessLogic
             else
             {
                 Console.WriteLine("Deletion canceled");
-            }
-        }
-
-        void ProcessDeletebyIndex2(int index, List<Airport> filteredAirports)
-        {
-            while (!(index < filteredAirports.Count && index >= 0)) // until in range
-            {
-                Console.WriteLine("Index is out of range, please correct");
-                while (true) // until number is entered
-                {
-                    string indexString = Console.ReadLine();
-                    if (int.TryParse(indexString, out index))
-                        break;
-                    Console.WriteLine("Please input number");
-                }
-                index--; // adjust 1-based to 0-based
-            }
-            Airport userSelectedAirport = filteredAirports[index];
-            ProcessDeleteAirport(userSelectedAirport);
-        }
-
-        void ProcessDeletebyIndex(int index, List<Airport> filteredAirports)
-        {
-            //проверяем, чтоб индекс был в списке
-            if (index < filteredAirports.Count && index >= 0)
-            {
-                Airport userSelectedAirport = filteredAirports[index];
-                ProcessDeleteAirport(userSelectedAirport);
-            }
-            else
-            {
-                while (index >= filteredAirports.Count)
-                {
-
-                    Console.WriteLine("Enter a bigger part of airport's name " +
-                         "or number in the list above");//НУЖНО ПОВТОРЯТЬ
-                    string indexOrSubstring = Console.ReadLine();
-                    if (int.TryParse(indexOrSubstring, out index))
-                    {
-                        ProcessDeletebyIndex(index - 1, filteredAirports);
-                        return;
-                    }
-
-                    Console.WriteLine("Wrong choice. Please Enter a bigger part of airport's name " +
-                        "or number in the list above");
-                }
             }
         }
 
