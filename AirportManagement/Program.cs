@@ -13,6 +13,8 @@ namespace AirportManagement
     {
         static void Main(string[] args)
         {
+            Console.SetWindowSize(60, 25);
+            Console.SetBufferSize(60, 1000);
             // Constructor invocation for this object is not relevant anymore
             All all = WriterReader.Read();//создаем экземпляр класса
 
