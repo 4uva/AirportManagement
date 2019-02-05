@@ -47,45 +47,28 @@ namespace AirportManagement.BusinessLogic
 
                 string indexOrSubstring = Console.ReadLine();
 
-                //проверяем или введенная строка не является число,
-                //переменная выхолит со значением, а вхдит не с чем
-                if (int.TryParse(indexOrSubstring, out int index))
+                // checking if input string is a number for the case of big list
+                if (filteredAirports.Count > 1 && int.TryParse(indexOrSubstring, out int index))
                 {
-                    // this checks if we have a list size >1 or empty list
-                    // only for the case of list size > 1 we consider numeric input
-                    // as index
-                    if (filteredAirports.Count > 1)
+                    // now try to delete airport by index
+                    // if index fits into the list index range...
+                    if (index < filteredAirports.Count && index >= 0)
                     {
-                        // so we have list size > 1, checking now if index fits into
-                        // list index range
-                        // now try to delete airport by index
-                        //1.сначала нужно проверить индекс, входит ли он
-                        //  в диапазон индексов списка (хороший) или
-                        //  нет (плохой)
-                        if (index < filteredAirports.Count && index >= 0)
-                        {
-                            //1a.если он хороший, то вызываем ProcessDeleteAirport
-                            //   (код можно стащить в закомментированных функциях)
-                            //   и выходим
-                            Airport userSelectedAirport = filteredAirports[index];
-                            ProcessDeleteAirport(userSelectedAirport);
-                            return;
-                        }
-                        else
-                        {
-                            //1b.если он плохой, ругаемся и идём на следующую итерацию
-                            Console.WriteLine("Wrong choice. There is no airports enlisted " +
-                             "Please try again.");
-                        }
+                        // remove the airpots it points to and leave function
+                        Airport userSelectedAirport = filteredAirports[index];
+                        ProcessDeleteAirport(userSelectedAirport);
+                        return;
                     }
-                    else // for the case of empty list we don't consider index
+                    else
                     {
-                        filteredAirports = all.GetFilteredByPartialLocationAirports(indexOrSubstring);//on screen filtred list
+                        // otherwise inform the user and continue iterating
+                        Console.WriteLine("Wrong choice. There is no airports enlisted " +
+                            "Please try again.");
                     }
                 }
-                else
+                else // for the case of empty list we don't consider index
                 {
-                    filteredAirports = all.GetFilteredByPartialLocationAirports(indexOrSubstring);
+                    filteredAirports = all.GetFilteredByPartialLocationAirports(indexOrSubstring);//on screen filtred list
                 }
             }
 
