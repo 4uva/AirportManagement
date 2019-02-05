@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace AirportManagement.Data.Storage
 {
-    class WriterReader
+    public class WriterReader
     {
         public static void Write (All all)
         { 

@@ -9,6 +9,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <ProjectReference Include="..\AirportManagement.Data\AirportManagement.Data.csproj" />
   </ItemGroup>
 </Project>
