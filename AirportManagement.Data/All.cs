@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Microsoft.EntityFrameworkCore;
+
 namespace AirportManagement.Data
-{  //будущая бз добавить списки
-   //аэропортов, полётов, и авиакомпаний
-    public class All
-    {
-        public All()//модификаторы, имя класса, 
-                    //в скобках список аргументов
-        {
+{
+    //добавить списки, аэропортов, полётов, и авиакомпаний
+    public class All : DbContext//унаследовали из библ.класса
+    {//todo where is datasset created
+        public DbSet<Airport> Airports { get; set; }//List updated to Dataset
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {//to do read info about OnConfiguring
+            // TODO: move the connection string to the configuration file
+            const string dbName = "AirportsDb";//что это за константа
+            optionsBuilder.UseSqlServer(
+                $@"Server=(localdb)\mssqllocaldb;Database={dbName};Trusted_Connection=True;");
         }
+
+        // utility functions
 
         public Airport AddAirport(string locationName)
         // создали публичную функцию добавить аэропорт , котррая
@@ -26,7 +35,7 @@ namespace AirportManagement.Data
             //вернули значение фактического параметра
         }
 
-        public  void DeleteAirport(Airport airport)
+        public void DeleteAirport(Airport airport)
         {   
             Airports.Remove(airport);
         }
@@ -50,7 +59,6 @@ namespace AirportManagement.Data
         //All All2 { get; set; }  свойство
         public void Create()
         {
-            Airports = new List<Airport>();//создали список
             AddAirport("Florence");//вызвали экземпляр списка
             AddAirport("Elabuga");
             AddAirport("Gatwick");
@@ -67,8 +75,6 @@ namespace AirportManagement.Data
                 .OrderBy(a => a.Location.Name)
                 .ToList();
         }
-
-        public List<Airport> Airports { get; set; }
     }
 }
 
