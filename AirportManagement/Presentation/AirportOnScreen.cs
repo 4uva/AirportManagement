@@ -15,7 +15,7 @@ namespace AirportManagement.Presentation
             Console.WriteLine("Airports");
         }
 
-        public void Output(List<Airport> Airports)
+        public void Output(IEnumerable<Airport> Airports)
         {
             foreach (Airport value in Airports)// in every type element value in variable 
             {
