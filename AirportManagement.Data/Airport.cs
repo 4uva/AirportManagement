@@ -13,5 +13,6 @@
         public Weather Weather { get; set; }
 
         public int Id { get; set; }
+        public int LocationId { get; set; }
     }
 }
