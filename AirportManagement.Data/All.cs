@@ -18,8 +18,49 @@ namespace AirportManagement.Data
             const string dbName = "AirportsDb";//что это за константа
             optionsBuilder.UseSqlServer(
                 $@"Server=(localdb)\mssqllocaldb;Database={dbName};Trusted_Connection=True;");
+            optionsBuilder.EnableSensitiveDataLogging();
+            base.OnConfiguring(optionsBuilder);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // seeding Airports table
+            // https://docs.microsoft.com/en-us/ef/core/modeling/data-seeding
+            
+            var seededAirports = new[]
+            {
+                CreateSeedAirportWithLocation("Florence", -1, -1),
+                CreateSeedAirportWithLocation("Elabuga", -2, -2),
+                CreateSeedAirportWithLocation("Gatwick", -3, -3),
+                CreateSeedAirportWithLocation("Innsbruk", -4, -4),
+                CreateSeedAirportWithLocation("Budapest", -5, -5),
+                CreateSeedAirportWithLocation("Bucharest", -6, -6),
+                CreateSeedAirportWithLocation("Buchara", -7, -7)
+            };
+
+            // к объекту modelBuilder создаем базу и вызываем метод HasData 
+            modelBuilder.Entity<Location>().HasData(seededAirports.Select(a => a.Location));
+            // workaround for bug https://github.com/aspnet/EntityFrameworkCore/issues/10000
+            foreach (var a in seededAirports)
+                a.Location = null;
+            modelBuilder.Entity<Airport>().HasData(seededAirports);
+
+            base.OnModelCreating(modelBuilder);
+        }
+        
+        Airport CreateSeedAirportWithLocation(string locationName, int airportId, int locationId)
+        {
+            return new Airport()
+            {
+                Id = airportId,// Airport has its own primary key
+                LocationId = locationId,//Location id is a foreign key for Airport
+                Location = new Location()
+                {
+                    Id = locationId,//primary key for Location
+                    Name = locationName
+                }
+            };
+        }
         // utility functions
 
         public Airport AddAirport(string locationName)
