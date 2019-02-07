@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AirportManagement.Data
@@ -17,5 +18,7 @@ namespace AirportManagement.Data
         public string LocalTimeZoneName { get; set; }
 
         public int Id { get; set; }
+
+        //public ICollection<Airport> Airports { get; set; }
     }
 }
