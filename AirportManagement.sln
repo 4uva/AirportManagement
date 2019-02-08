@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Requirements.txt = Requirements.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirportManagement.Data", "AirportManagement.Data\AirportManagement.Data.csproj", "{1DEC7319-918F-4E70-8E7B-F3231BB6553A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirportManagement.Data", "AirportManagement.Data\AirportManagement.Data.csproj", "{1DEC7319-918F-4E70-8E7B-F3231BB6553A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
