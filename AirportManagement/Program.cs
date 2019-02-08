@@ -15,22 +15,20 @@ namespace AirportManagement
         {
             Console.SetWindowSize(60, 25);
             Console.SetBufferSize(60, 1000);
-            // Constructor invocation for this object is not relevant anymore
-            All all = WriterReader.Read();//создаем экземпляр класса
 
-            MainLogic logic = new MainLogic(all);
-            //заводим экземпляр бизнес логики вместо экземпляра меню
             while (true)
             {
-                StepResult result = logic.RunStep();
-                //вызываем у бизнес логики функцию 
-                //так мы раньше вызывали меню 
-                //и значение и присваиваем в переменную
-                if (result == StepResult.Exit)//это переписанный Userchoicecancel
-                    break;
+                using (var all = new All())
+                {
+                    MainLogic logic = new MainLogic(all);
+                    StepResult result = logic.RunStep();
+                    //вызываем у бизнес логики функцию 
+                    //так мы раньше вызывали меню 
+                    //и значение и присваиваем в переменную
+                    if (result == StepResult.Exit)//это переписанный Userchoicecancel
+                        break;
+                }
             }
-            WriterReader.Write(all);//статический метод вызывается у класса
-            Console.ReadKey();
         }
     }
 }
