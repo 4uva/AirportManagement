@@ -34,7 +34,7 @@ namespace AirportManagement.Data.Storage
             catch (FileNotFoundException)
             {
                 All all = new All();
-                all.Create();
+                //all.Create(); // replaced by seeding
                 return all;
             }
         }
