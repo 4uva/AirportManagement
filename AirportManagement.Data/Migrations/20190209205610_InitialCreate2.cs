@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AirportManagement.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreate2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,8 +39,8 @@ namespace AirportManagement.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LocationId = table.Column<int>(nullable: true),
-                    WeatherId = table.Column<int>(nullable: true)
+                    WeatherId = table.Column<int>(nullable: true),
+                    LocationId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,13 +50,41 @@ namespace AirportManagement.Data.Migrations
                         column: x => x.LocationId,
                         principalTable: "Location",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Airports_Weather_WeatherId",
                         column: x => x.WeatherId,
                         principalTable: "Weather",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Location",
+                columns: new[] { "Id", "LocalTimeZoneName", "Name" },
+                values: new object[,]
+                {
+                    { -1, null, "Florence" },
+                    { -2, null, "Elabuga" },
+                    { -3, null, "Gatwick" },
+                    { -4, null, "Innsbruk" },
+                    { -5, null, "Budapest" },
+                    { -6, null, "Bucharest" },
+                    { -7, null, "Buchara" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Airports",
+                columns: new[] { "Id", "LocationId", "WeatherId" },
+                values: new object[,]
+                {
+                    { -1, -1, null },
+                    { -2, -2, null },
+                    { -3, -3, null },
+                    { -4, -4, null },
+                    { -5, -5, null },
+                    { -6, -6, null },
+                    { -7, -7, null }
                 });
 
             migrationBuilder.CreateIndex(
