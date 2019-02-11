@@ -11,7 +11,8 @@
         //TODO: добавить конструктор, устанавливающий Location
         public Location Location { get; set; }
         public Weather Weather { get; set; }
-
+        public string Name { get; set; }
+        
         public int Id { get; set; }
         public int LocationId { get; set; }
     }
