@@ -27,37 +27,54 @@ namespace AirportManagement.Data.EF
         {
             // seeding Airports table
             // https://docs.microsoft.com/en-us/ef/core/modeling/data-seeding
-
+            // 1.я создаю нужные аэропорты и кладу их в список `seededAirports`
             var seededAirports = new[]
             {
-                CreateSeedAirportWithLocation("Florence", -1, -1),
-                CreateSeedAirportWithLocation("Elabuga", -2, -2),
-                CreateSeedAirportWithLocation("Gatwick", -3, -3),
-                CreateSeedAirportWithLocation("Innsbruk", -4, -4),
-                CreateSeedAirportWithLocation("Budapest", -5, -5),
-                CreateSeedAirportWithLocation("Bucharest", -6, -6),
-                CreateSeedAirportWithLocation("Buchara", -7, -7)
+                CreateSeedAirportWithLocation("Florence","Amerigo Vespuchi", -1, -1),
+                CreateSeedAirportWithLocation("Elabuga", "Kazan",-2, -2),
+                CreateSeedAirportWithLocation("Gatwick", "Gatwick",-3, -3),
+                CreateSeedAirportWithLocation("Innsbruk","Kranebitten", -4, -4),
+                CreateSeedAirportWithLocation("Budapest", "Ferenc Liszt",-5, -5),
+                CreateSeedAirportWithLocation("Bucharest","Henri Coandă", -6, -6),
+                CreateSeedAirportWithLocation("Buchara", "Buchara",-7, -7)
             };
 
             // к объекту modelBuilder создаем базу и вызываем метод HasData
             // todo WHAT IS GENERIC
+            //сидирование location'ов 
             modelBuilder.Entity<Location>().HasData(seededAirports.Select(a => a.Location));
+            // то есть это значит, 
+            //что мы должны сделать это в
+            //нашем `OnModelCreating` в `DbContext`'е) (edited) 
+            // код, который там рекомендуется, такой:
+
+
+            //modelBuilder.Entity<Airport>().HasData(seededAirports.Select(b => b.Name));
             //из каждого аэропорта берём `Location`, и делаем из них 
             //новый список~ новую коллекцию
             //и то, что получилось, передаём аргументом
             //в HasDataто есть все локации
             // workaround for bug https://github.com/aspnet/EntityFrameworkCore/issues/10000
+           //3. убрать навигационные свойства, 
             foreach (var a in seededAirports)
                 a.Location = null;
             modelBuilder.Entity<Airport>().HasData(seededAirports);
 
             base.OnModelCreating(modelBuilder);
+            //4. убрать навигационные свойства, 
+            foreach (var b in seededAirports)
+                b.Name = null;
+
+            // 2. и передаю их в `.HasData()`
+            modelBuilder.Entity<Airport>().HasData(seededAirports);
+
+            base.OnModelCreating(modelBuilder);
         }
 
-        Airport CreateSeedAirportWithLocation(string locationName, int airportId, int locationId)
+        Airport CreateSeedAirportWithLocation(string locationName,string airportName, int airportId, int locationId)
         {
             return new Airport()
-            {
+            {//добавление foreign key внутри функции 
                 Id = airportId,// Airport has its own primary key
                 LocationId = locationId,//Location id is a foreign key for Airport
                 Location = new Location()
