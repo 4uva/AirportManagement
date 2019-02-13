@@ -41,37 +41,21 @@ namespace AirportManagement.Data.EF
 
             // к объекту modelBuilder создаем базу и вызываем метод HasData
             // todo WHAT IS GENERIC
-            //сидирование location'ов 
+            //2. сидирование location'ов 
             modelBuilder.Entity<Location>().HasData(seededAirports.Select(a => a.Location));
-            // то есть это значит, 
-            //что мы должны сделать это в
-            //нашем `OnModelCreating` в `DbContext`'е) (edited) 
-            // код, который там рекомендуется, такой:
-
-
-            //modelBuilder.Entity<Airport>().HasData(seededAirports.Select(b => b.Name));
-            //из каждого аэропорта берём `Location`, и делаем из них 
-            //новый список~ новую коллекцию
-            //и то, что получилось, передаём аргументом
-            //в HasDataто есть все локации
             // workaround for bug https://github.com/aspnet/EntityFrameworkCore/issues/10000
-           //3. убрать навигационные свойства, 
+            //он о том, что миграции в EF 2.1 (это наша версия) 
+            //всё ещё не умеют работать с навигационными свойствами, 
+            //и что нужно их убрать, и установить самим внешние ключи
+
             foreach (var a in seededAirports)
                 a.Location = null;
             modelBuilder.Entity<Airport>().HasData(seededAirports);
 
             base.OnModelCreating(modelBuilder);
-            //4. убрать навигационные свойства, 
-            foreach (var b in seededAirports)
-                b.Name = null;
-
-            // 2. и передаю их в `.HasData()`
-            modelBuilder.Entity<Airport>().HasData(seededAirports);
-
-            base.OnModelCreating(modelBuilder);
         }
 
-        Airport CreateSeedAirportWithLocation(string locationName,string airportName, int airportId, int locationId)
+        Airport CreateSeedAirportWithLocation(string locationName, string airportName, int airportId, int locationId)
         {
             return new Airport()
             {//добавление foreign key внутри функции 
