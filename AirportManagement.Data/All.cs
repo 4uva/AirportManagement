@@ -24,23 +24,20 @@ namespace AirportManagement.Data
         }
 
         public void DeleteAirport(Airport airport)
-        {   
+        {
             dbContext.Airports.Remove(airport);
         }
 
         Airport CreateAirport(string locationName)
         {
-            var a = new Airport();//
-            //1)мы присвоили переменной а значение нового аэропорта
-            var f = new Location();//
-            a.Location = f;
-            f.Name = locationName;
-            //2)мы присвоили переменной f значение локация var g = new Location();           
-            //мы присвоили полю                                                                         Аэропорта 
-            //значение объекта типа Location, у которого есть поле `Name`c.Location = g;
-            //3)мы обратились к полю Name класса Location
-            return a;//переменная умрет, а нам нужно сделать так,
-            // чтоб эти данные а можно было записать в функции
+
+            return new Airport()
+            {
+                Location = new Location
+                {
+                    Name = locationName
+                }
+            };
         }
 
         public List<Airport> GetFilteredByPartialLocationAirports(string partialLocation)
@@ -68,28 +65,8 @@ namespace AirportManagement.Data
         }
 
         EF.AirportDbContext dbContext = new EF.AirportDbContext();
-        
+
     }
 }
 
 
-//var airports0 = new List<Airport>()
-//{
-//    new Airport(),
-//    new Airport(),
-//    new Airport(),
-//    new Airport()
-//};
-//---------------------------------------
-
-//var airports2 = new List<Airport>();
-//airports2.Add(new Airport());//в
-//airports2.Add(new Airport());
-//airports2.Add(new Airport());
-//airports2.Add(new Airport());
-
-////---------------------------------------
-
-//var airports3 = new List<Airport>();//список на входе
-//airports3.AddRange(new List<Airport>() { new Airport(), new Airport(), new Airport(), new Airport() });
-//airports3.AddRange(new Airport[] { new Airport(), new Airport(), new Airport(), new Airport() });//массив на выходе
