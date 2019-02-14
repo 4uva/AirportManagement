@@ -30,7 +30,6 @@ namespace AirportManagement.Data
 
         Airport CreateAirport(string locationName)
         {
-
             return new Airport()
             {
                 Location = new Location
@@ -65,8 +64,5 @@ namespace AirportManagement.Data
         }
 
         EF.AirportDbContext dbContext = new EF.AirportDbContext();
-
     }
 }
-
-
