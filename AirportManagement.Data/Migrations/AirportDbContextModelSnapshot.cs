@@ -27,6 +27,8 @@ namespace AirportManagement.Data.Migrations
 
                     b.Property<int>("LocationId");
 
+                    b.Property<string>("Name");
+
                     b.Property<int?>("WeatherId");
 
                     b.HasKey("Id");
@@ -41,37 +43,44 @@ namespace AirportManagement.Data.Migrations
                         new
                         {
                             Id = -1,
-                            LocationId = -1
+                            LocationId = -1,
+                            Name = "Amerigo Vespuchi"
                         },
                         new
                         {
                             Id = -2,
-                            LocationId = -2
+                            LocationId = -2,
+                            Name = "Kazan"
                         },
                         new
                         {
                             Id = -3,
-                            LocationId = -3
+                            LocationId = -3,
+                            Name = "Gatwick"
                         },
                         new
                         {
                             Id = -4,
-                            LocationId = -4
+                            LocationId = -4,
+                            Name = "Kranebitten"
                         },
                         new
                         {
                             Id = -5,
-                            LocationId = -5
+                            LocationId = -5,
+                            Name = "Ferenc Liszt"
                         },
                         new
                         {
                             Id = -6,
-                            LocationId = -6
+                            LocationId = -6,
+                            Name = "Henri Coandă"
                         },
                         new
                         {
                             Id = -7,
-                            LocationId = -7
+                            LocationId = -7,
+                            Name = "Buchara"
                         });
                 });
 
