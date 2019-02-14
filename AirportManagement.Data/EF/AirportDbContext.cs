@@ -61,6 +61,9 @@ namespace AirportManagement.Data.EF
             {//добавление foreign key внутри функции 
                 Id = airportId,// Airport has its own primary key
                 LocationId = locationId,//Location id is a foreign key for Airport
+
+                Name = airportName,
+
                 Location = new Location()
                 {
                     Id = locationId,//primary key for Location
