@@ -26,13 +26,12 @@ namespace AirportManagement.BusinessLogic
         void ProcessDelete()
         {
             //просим ввести аэропорт частично
-            Console.WriteLine("Enter part of airport's name");
+            Console.WriteLine("Enter part of airport's name or location");
             //читаем ввод
             string airportPartialName = Console.ReadLine();
             // после прочтения может не создать список в строке 30
             //создаем список аэропортов на основе вызова функции фильтрации
-            List<Airport> filteredAirports =
-                all.GetFilteredByPartialLocationAirports(airportPartialName);
+            List<Airport> filteredAirports = all.GetFilteredAirports(airportPartialName);
 
             // a) список аэропортов не обновляется в цикле, из-за чего выводится каждый раз одно и то же
             // b)проверить вывод отсортированого списка
@@ -70,7 +69,7 @@ namespace AirportManagement.BusinessLogic
                 }
                 else // for the case of empty list we don't consider index
                 {
-                    filteredAirports = all.GetFilteredByPartialLocationAirports(indexOrSubstring);//on screen filtred list
+                    filteredAirports = all.GetFilteredAirports(indexOrSubstring);//on screen filtred list
                 }
             }
 
