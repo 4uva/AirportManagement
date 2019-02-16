@@ -10,11 +10,11 @@ namespace AirportManagement.Data
     //добавить списки, аэропортов, полётов, и авиакомпаний
     public class All : IDisposable
     {
-        public Airport AddAirport(string locationName)
+        public Airport AddAirport(string airportName, string locationName)
         // создали публичную функцию добавить аэропорт , котррая
         //возращает аэропорт и на вход получает имя аэропорта
         {
-            var a = CreateAirport(locationName);
+            var a = CreateAirport(airportName, locationName);
             //создали переменную и присвоили ей значение вызова 
             //функции с параметром локация аэропорта
             dbContext.Airports.Add(a);//добавили экземпляр аэропорта 
@@ -28,10 +28,11 @@ namespace AirportManagement.Data
             dbContext.Airports.Remove(airport);
         }
 
-        Airport CreateAirport(string locationName)
+        Airport CreateAirport(string airportName, string locationName)
         {
             return new Airport()
             {
+                Name = airportName,
                 Location = new Location
                 {
                     Name = locationName
@@ -40,18 +41,18 @@ namespace AirportManagement.Data
         }
 
         public List<Airport> GetFilteredByPartialLocationAirports(string partialLocation)
-        {//todo WHAT IS LINQ
-            return Airports
-                .Where(a => a.Location.Name.Contains(partialLocation, StringComparison.InvariantCultureIgnoreCase))
-                .OrderBy(a => a.Location.Name)
-                .ToList();
-        }
+            {//todo WHAT IS LINQ
+                return Airports
+                    .Where(a => a.Location.Name.Contains(partialLocation, StringComparison.InvariantCultureIgnoreCase))
+                    .OrderBy(a => a.Location.Name)
+                    .ToList();
+            }
 
-        public void Dispose()
-        {
-            dbContext.SaveChanges();
-            dbContext.Dispose();
-        }
+            public void Dispose()
+            {
+                dbContext.SaveChanges();
+                dbContext.Dispose();
+            }
 
         public IEnumerable<Airport> Airports
         {

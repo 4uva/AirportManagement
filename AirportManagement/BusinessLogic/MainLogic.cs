@@ -16,9 +16,11 @@ namespace AirportManagement.BusinessLogic
 
         void ProcessAdd()
         {
-            Console.WriteLine("Please add an Airport");
+            Console.WriteLine("Please specify the airport's name:");
             string userInput = Console.ReadLine();
-            all.AddAirport(userInput);
+            Console.WriteLine("Please specify the airport's location:");
+            string userInput2 = Console.ReadLine();
+            all.AddAirport(airportName: userInput, locationName: userInput2);
         }
 
         void ProcessDelete()
