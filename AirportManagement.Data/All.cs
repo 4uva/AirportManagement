@@ -40,19 +40,20 @@ namespace AirportManagement.Data
             };
         }
 
-        public List<Airport> GetFilteredByPartialLocationAirports(string partialLocation)
-            {//todo WHAT IS LINQ
-                return Airports
-                    .Where(a => a.Location.Name.Contains(partialLocation, StringComparison.InvariantCultureIgnoreCase))
-                    .OrderBy(a => a.Location.Name)
-                    .ToList();
-            }
+        public List<Airport> GetFilteredAirports(string partialName)
+        {//todo WHAT IS LINQ
+            return Airports
+                .Where(a => a.Location.Name.Contains(partialName, StringComparison.InvariantCultureIgnoreCase) ||
+                            a.Name.Contains(partialName, StringComparison.InvariantCultureIgnoreCase))
+                .OrderBy(a => a.Location.Name)
+                .ToList();
+                }
 
-            public void Dispose()
-            {
-                dbContext.SaveChanges();
-                dbContext.Dispose();
-            }
+        public void Dispose()
+        {
+            dbContext.SaveChanges();
+            dbContext.Dispose();
+        }
 
         public IEnumerable<Airport> Airports
         {
