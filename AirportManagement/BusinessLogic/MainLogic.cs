@@ -51,6 +51,7 @@ namespace AirportManagement.BusinessLogic
                 // checking if input string is a number for the case of big list
                 if (filteredAirports.Count > 1 && int.TryParse(indexOrSubstring, out int index))
                 {
+                    index--; // convert from 1-based user input into 0-based index
                     // now try to delete airport by index
                     // if index fits into the list index range...
                     if (index < filteredAirports.Count && index >= 0)
