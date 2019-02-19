@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using AirportManagement.Data;
 namespace AirportManagement.Presentation
 {
-    class AirportOnScreen
+    public class AirportOnScreen
     {
         public AirportOnScreen()
         {

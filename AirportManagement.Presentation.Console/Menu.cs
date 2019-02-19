@@ -2,7 +2,7 @@
 
 namespace AirportManagement.Presentation
 {
-    class Menu
+    public class Menu
     {
         public void DisplayGreeting()
         {

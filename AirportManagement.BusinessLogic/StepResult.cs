@@ -2,7 +2,7 @@
 
 namespace AirportManagement.BusinessLogic
 {
-    enum StepResult
+    public enum StepResult
     {
         Continue,
         Exit

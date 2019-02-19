@@ -6,7 +6,7 @@ using AirportManagement.Presentation;
 
 namespace AirportManagement.BusinessLogic
 {
-    class MainLogic
+    public class MainLogic
     {
         public MainLogic(All all)
         {
