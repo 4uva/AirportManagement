@@ -42,12 +42,13 @@ namespace AirportManagement.Data
 
         public List<Airport> GetFilteredAirports(string partialName)
         {//todo WHAT IS LINQ
+            // TODO: use overload of Contains with StringComparison.InvariantCultureIgnoreCase when available
             return Airports
-                .Where(a => a.Location.Name.Contains(partialName, StringComparison.InvariantCultureIgnoreCase) ||
-                            a.Name.Contains(partialName, StringComparison.InvariantCultureIgnoreCase))
+                .Where(a => a.Location.Name.IndexOf(partialName, StringComparison.InvariantCultureIgnoreCase) != -1 ||
+                            a.Name.IndexOf(partialName, StringComparison.InvariantCultureIgnoreCase) != -1)
                 .OrderBy(a => a.Location.Name)
                 .ToList();
-                }
+        }
 
         public void Dispose()
         {
