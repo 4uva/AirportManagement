@@ -28,9 +28,7 @@ namespace AirportManagement.Data
             dbContext.Airports.Remove(airport);
         }
 
-        Airport CreateAirport(string airportName, string locationName)
-        {
-            return new Airport()
+        Airport CreateAirport(string airportName, string locationName) => new Airport()
             {
                 Name = airportName,
                 Location = new Location
@@ -38,17 +36,15 @@ namespace AirportManagement.Data
                     Name = locationName
                 }
             };
-        }
 
-        public List<Airport> GetFilteredAirports(string partialName)
-        {//todo WHAT IS LINQ
+        public List<Airport> GetFilteredAirports(string partialName) =>
+        //todo WHAT IS LINQ
             // TODO: use overload of Contains with StringComparison.InvariantCultureIgnoreCase when available
-            return Airports
+            Airports
                 .Where(a => a.Location.Name.IndexOf(partialName, StringComparison.InvariantCultureIgnoreCase) != -1 ||
                             a.Name.IndexOf(partialName, StringComparison.InvariantCultureIgnoreCase) != -1)
                 .OrderBy(a => a.Location.Name)
                 .ToList();
-        }
 
         public void Dispose()
         {
