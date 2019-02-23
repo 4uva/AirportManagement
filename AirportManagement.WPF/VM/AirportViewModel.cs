@@ -6,7 +6,10 @@ namespace AirportManagement.WPF.VM
     {
         public AirportViewModel(Airport airport)
         {
-            this.airport = airport;
+            //когда функция обращается к полю, то она при этом фактически
+            //работает с полем какого - то конкретного объекта
+            //ну вот этот самый объект и имеет имя `this` внутри функции
+            this.airport = airport;//AirportViewModel тип this
             name = airport.Name;
             locationName = airport.Location.Name;
         }
@@ -21,10 +24,11 @@ namespace AirportManagement.WPF.VM
         string locationName;
         public string LocationName
         {
-            get => locationName;
+            get => locationName;// => == return locationName
             set => Set(ref locationName, value);
+            //set { Set(ref locationName, value); }`
         }
 
-        Airport airport;
+        Airport airport;//зачем нам эта строка
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AirportManagement.WPF.VM
 {
     // базовый класс для всех view model-классов
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModel : INotifyPropertyChanged//реализует интерфейс
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
