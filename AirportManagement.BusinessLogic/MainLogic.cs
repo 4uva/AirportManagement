@@ -8,9 +8,9 @@ namespace AirportManagement.BusinessLogic
 {
     public class MainLogic
     {
-        public MainLogic(All all)
+        public MainLogic(Repository repository)
         {
-            this.all = all;
+            this.repository = repository;
             menu.DisplayGreeting();
         }
 
@@ -20,7 +20,7 @@ namespace AirportManagement.BusinessLogic
             string userInput = Console.ReadLine();
             Console.WriteLine("Please specify the airport's location:");
             string userInput2 = Console.ReadLine();
-            all.AddAirport(airportName: userInput, locationName: userInput2);
+            repository.AddAirport(airportName: userInput, locationName: userInput2);
         }
 
         void ProcessDelete()
@@ -31,7 +31,7 @@ namespace AirportManagement.BusinessLogic
             string airportPartialName = Console.ReadLine();
             // после прочтения может не создать список в строке 30
             //создаем список аэропортов на основе вызова функции фильтрации
-            List<Airport> filteredAirports = all.GetFilteredAirports(airportPartialName);
+            List<Airport> filteredAirports = repository.GetFilteredAirports(airportPartialName);
 
             // a) список аэропортов не обновляется в цикле, из-за чего выводится каждый раз одно и то же
             // b)проверить вывод отсортированого списка
@@ -70,7 +70,7 @@ namespace AirportManagement.BusinessLogic
                 }
                 else // for the case of empty list we don't consider index
                 {
-                    filteredAirports = all.GetFilteredAirports(indexOrSubstring);//on screen filtred list
+                    filteredAirports = repository.GetFilteredAirports(indexOrSubstring);//on screen filtred list
                 }
             }
 
@@ -88,7 +88,7 @@ namespace AirportManagement.BusinessLogic
             //если юзер выбрал удалить
             if (deletion == "d")
             {
-                all.DeleteAirport(airport);
+                repository.DeleteAirport(airport);
                 Console.WriteLine(" Selected airport was sucessfully deleted");
             }
             else
@@ -106,7 +106,7 @@ namespace AirportManagement.BusinessLogic
         {
             // Airports
             airportOnScreen.HeaderOutput();
-            airportOnScreen.Output(all.Airports);
+            airportOnScreen.Output(repository.Airports);
             UserChoice userchoice = menu.Run();
             //это дублирующая логика только для слоя презентации 
             if (userchoice == UserChoice.Add)
@@ -128,6 +128,6 @@ namespace AirportManagement.BusinessLogic
         //это поле, которое инициализируется ссылкой на экземпляр объекта
         private AirportOnScreen airportOnScreen = new AirportOnScreen();
         private Menu menu = new Menu();
-        private All all;
+        private Repository repository;
     }
 }

@@ -13,9 +13,9 @@ namespace AirportManagement.WPF.VM
         //и что это значит 
     {
        //имя совпадает с именем класса + нет возвращаемого типа - функция AirportListViewModel - к*/онструктор
-        public AirportListViewModel(All all)//читаем данные из базы
+        public AirportListViewModel(Repository repository)//читаем данные из базы
         {
-            foreach (var airport in all.Airports)//это же обращение к объекту другого класса
+            foreach (var airport in repository.Airports)//это же обращение к объекту другого класса
             {
                 AirportViewModel airportViewModel = new AirportViewModel(airport);
                 Airports.Add(airportViewModel);

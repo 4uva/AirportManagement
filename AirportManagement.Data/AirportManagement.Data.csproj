@@ -132,7 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Airport.cs" />
-    <Compile Include="All.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="Arrival.cs" />
     <Compile Include="Departure.cs" />
     <Compile Include="EF\AirportDbContext.cs" />

@@ -15,8 +15,8 @@ namespace AirportManagement.WPF
         protected override void OnStartup(StartupEventArgs e)//поясни Raises the Startup event.
         {
             base.OnStartup(e);
-            var all = new All(); // TODO: не грузить базу в UI-потоке
-            var listViewModel = new AirportListViewModel(all);//откуда взялся этот тип
+            var repository = new Repository(); // TODO: не грузить базу в UI-потоке
+            var listViewModel = new AirportListViewModel(repository);//откуда взялся этот тип
             var window = new MainWindow() { DataContext = listViewModel }; //поясни всю строку MainWindow is automatically set with a reference to the first Window object to be instantiated in the AppDomain.
             window.Show();
         }

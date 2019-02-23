@@ -18,9 +18,9 @@ namespace AirportManagement
 
             while (true)
             {
-                using (var all = new All())
+                using (var repository = new Repository())
                 {
-                    MainLogic logic = new MainLogic(all);
+                    MainLogic logic = new MainLogic(repository);
                     StepResult result = logic.RunStep();
                     //вызываем у бизнес логики функцию 
                     //так мы раньше вызывали меню 

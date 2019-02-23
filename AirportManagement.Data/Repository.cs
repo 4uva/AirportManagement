@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AirportManagement.Data
 {
     //добавить списки, аэропортов, полётов, и авиакомпаний
-    public class All : IDisposable
+    public class Repository : IDisposable
     {
         public Airport AddAirport(string airportName, string locationName)
         // создали публичную функцию добавить аэропорт , котррая

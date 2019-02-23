@@ -8,18 +8,18 @@ namespace AirportManagement.Data.Storage
 {
     public class WriterReader
     {
-        public static void Write (All all)
+        public static void Write (Repository repository)
         { 
             JsonSerializer serializer = new JsonSerializer();
             serializer.NullValueHandling = NullValueHandling.Ignore;
             using (StreamWriter sw = new StreamWriter("all.json"))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, all); 
+                serializer.Serialize(writer, repository); 
             }
         }
 
-        public static All Read()
+        public static Repository Read()
         {
             try
             {
@@ -27,15 +27,15 @@ namespace AirportManagement.Data.Storage
                 using (StreamReader file = File.OpenText("all.json"))
                 {
                     JsonSerializer serializer = new JsonSerializer();
-                    All all = (All)serializer.Deserialize(file, typeof(All));
-                    return all;
+                    Repository repository = (Repository)serializer.Deserialize(file, typeof(Repository));
+                    return repository;
                 }
             }
             catch (FileNotFoundException)
             {
-                All all = new All();
-                //all.Create(); // replaced by seeding
-                return all;
+                Repository repository = new Repository();
+                //repository.Create(); // replaced by seeding
+                return repository;
             }
         }
     }
