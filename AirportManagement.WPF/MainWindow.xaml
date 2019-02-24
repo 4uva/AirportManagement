@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportManagement.WPF"
         mc:Ignorable="d"
-        Title="СAirports" Height="450" Width="800">
+        Title="Airports" Height="450" Width="800">
     <DockPanel LastChildFill="True">
+        <DockPanel LastChildFill="True" DockPanel.Dock="Top">
+            <Label Content="Filter: "/>
+            <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}"/>
+        </DockPanel>
         <ListView ItemsSource="{Binding FilteredAirports}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" 
-                                    Header="Название" Width="200"/>
+                                    Header="Name" Width="200"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=LocationName}" 
-                                    Header="Расположение" Width="200"/>
+                                    Header="Location" Width="200"/>
                 </GridView>
             </ListView.View>
         </ListView>
