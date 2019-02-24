@@ -11,6 +11,7 @@ namespace AirportManagement.Data.EF
     {
         //todo where is datasset created
         public DbSet<Airport> Airports { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
 
         // https://docs.microsoft.com/en-us/ef/core/miscellaneous/configuring-dbcontext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -73,3 +74,4 @@ namespace AirportManagement.Data.EF
         }
     }
 }
+
