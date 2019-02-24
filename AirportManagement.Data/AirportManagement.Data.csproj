@@ -132,6 +132,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Airport.cs" />
+    <Compile Include="Migrations\20190224233011_AddedPassengers.cs" />
+    <Compile Include="Migrations\20190224233011_AddedPassengers.designer.cs">
+      <DependentUpon>20190224233011_AddedPassengers.cs</DependentUpon>
+    </Compile>
     <Compile Include="SeatClass.cs" />
     <Compile Include="PassengerStatus.cs" />
     <Compile Include="Repository.cs" />
