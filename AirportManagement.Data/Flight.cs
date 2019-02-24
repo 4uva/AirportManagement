@@ -10,5 +10,6 @@ namespace AirportManagement.Data
     {
         string FlightNumber { get; set; }
         FlightStatus current = FlightStatus.Checkin;
+        int  Id { get; set; }
     }
 }
