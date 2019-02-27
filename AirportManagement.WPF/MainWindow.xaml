@@ -6,17 +6,36 @@
         xmlns:local="clr-namespace:AirportManagement.WPF"
         mc:Ignorable="d"
         Title="Airports" Height="450" Width="800">
+   <!-- DataContext наследуется от охватывающего элемента, а охватывающий 
+        (родительский) элемент — это Window -->
     <DockPanel LastChildFill="True">
         <DockPanel LastChildFill="True" DockPanel.Dock="Top">
             <Label Content="Filter: "/>
             <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}"/>
+            <!--
+                мы берём объект из DataContext'а (это у нас объект типа AirportListViewModel)
+                берём у него свойство Filter (оно там есть) и привязываем содержимое TextBlock к значению этого свойства
+                таким образом, если свойство Filter меняет значение, то и содержимое TextBlock'а тоже
+                или если мы в TextBlock'е вручную впечатываем новое значение, то оно автоматически,
+                в силу привязки, попадает в свойство Filter
+            -->
         </DockPanel>
+        <!-- ListView -этот список визуализирует список FilteredAirports
+             находящийся в VM -->
         <ListView ItemsSource="{Binding FilteredAirports}">
+            <!-- ItemsSource — это свойство, к которому мы привязываем коллекцию VM-элементов -->
             <ListView.View>
+                <!-- ListView.View — `<ListView.View>чтотоещё</ListView.View> ` — это установка свойства `View` в значение `чтотоещё`
+                чтотоещё` большое, многострочное (строки 26-31 -->
+                
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" 
+                    <!-- в этой колонке для каждого из элементов списка берём через
+                         привязку свойство Name и его отображаем
+                         элементами списка у нас являются AirportViewModel,
+                         у них есть свойство Name -->
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" 
                                     Header="Name" Width="200"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=LocationName}" 
+                    <GridViewColumn DisplayMemberBinding="{Binding LocationName}" 
                                     Header="Location" Width="200"/>
                 </GridView>
             </ListView.View>
