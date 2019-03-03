@@ -22,6 +22,8 @@ namespace AirportManagement.WPF.VM
                 FilteredAirports.Add(airportViewModel);//FilteredAirports -это  свойство из строки   public ObservableCollection<AirportViewModel> FilteredAirports
                 filteredAirportsSet.Add(airportViewModel);//filteredAirportsSet,где оно инициализировано
             }
+
+            DeleteSelectedAirportCommand = new RelayCommand(OnDeleteSelectedAirport, CanDeleteSelectedAirport);
         }
 
         public ObservableCollection<AirportViewModel> Airports { get; } =//строки 26-29 даже по типу не могу понять что это
@@ -101,16 +103,54 @@ namespace AirportManagement.WPF.VM
                 }
             }
         }
-
-        bool CheckFilter(AirportViewModel airport, string filter)
+        //CheckFilter решает, подходит список под фильтр или нет
+        bool CheckFilter(AirportViewModel airport, string filter)// string filter- я не пойму этот параметр
         {//nullотличается от  ""чем отсутствие вагона отличается 
             //от пустого вагона? и там, и там нету пассажиров
-            if (filter == null || filter == "")
+            if (filter == null || filter == "")// фильтрация по пустому фильтру даёт весь список
                 return true;
 
             // тут у нас есть непустой фильтр
-            return airport.Name.IndexOf(filter, StringComparison.InvariantCultureIgnoreCase) != -1 ||
+            return airport.Name.IndexOf(filter, StringComparison.InvariantCultureIgnoreCase) != -1 ||//обращение к enum-константе так и только так: имя типа, точка, имя константы
                 airport.LocationName.IndexOf(filter, StringComparison.InvariantCultureIgnoreCase) != -1;
         }
+        Airport selectedAirport;
+        Repository repository;
+        public Airport SelectedAirport
+        {
+            get =>selectedAirport;
+            set => Set( ref selectedAirport, value);
+        }
+
+        RelayCommand DeleteSelectedAirportCommand { get; }
+
+        void OnDeleteSelectedAirport()
+        {
+            // удаляем аэропорт через репозиторий
+            // но у нас его нету :( кого нет? репозитория нету в этом классе или есть? есть 
+            // ага, мы его просто не сохранили в поле
+            // поэтому и не могли к нему обратиться после конструктора
+            // заводим поле
+        }
+
+        bool CanDeleteSelectedAirport() => SelectedAirport != null;
+
+        // [v] 1. кладём свойство SelectedAirport
+        // [ ] 2. кладём команду DeleteSelectedAirportCommand
+        // [ ] 3. команда будет удалёть из базы выбранный (selected) аэропорт
+        // [ ] 4. когда SelectdAirport == null, команду нужно отключать
     }
 }
+//getter не записывает, он читает
+//но геттер у нас не автоматический, 
+//    откуда он берёт значение?
+//из поля selectedAirport
+//таким образом, setter будет писать 
+//в секретное поле, 
+// а getter выдавать значение из 
+//    поля selectedAirport, в которое
+//    мы никогда ничего не записывали(edited)
+//не пользкемся  автоматическим сеттером?
+//раз он не делает того, что нам надокроме того,
+//мы в сеттере должны отправлять сообщение
+//    NorifyPropertyChanged//
