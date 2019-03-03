@@ -18,7 +18,7 @@ namespace AirportManagement.WPF.VM
         public string Name
         {
             get => name;
-            set => Set(ref name, value);
+            set => Set(ref name, value);//присваивание свойству есть вызов сеттера
         }
 
         string locationName;

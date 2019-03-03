@@ -14,15 +14,22 @@ namespace AirportManagement.WPF.VM
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        // у нас функция (вызвать могут только наследники) которая возращает true/false, а принимает
+        // с аргументами я не понимаю чего-то 
         {
-            if (EqualityComparer<T>.Default.Equals(field, value))
+            if (EqualityComparer<T>.Default.Equals(field, value))//сравнивает экземпляры класса EqualityComparer<T>
                 return false;
-            field = value;
-            RaisePropertyChanged(propertyName);
+            field = value;//поле равно значению
+            RaisePropertyChanged(propertyName);//вызывается метод чтоб изменить поле
             return true;
         }
 
         protected void RaisePropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //=> -это return  `?.` — это проверка на null- PropertyChanged?  и вызов метода 
+        //PropertyChanged` равно `null`, если никто не подписался
+        //Invoke(this, new PropertyChangedEventArgs(propertyName)); с аргумепнтами 
+        // this - это ж текущий объект
+        //new PropertyChangedEventArgs(propertyName)) - это просто тип, который содержит имя свойства, которое изменилось
     }
 }
