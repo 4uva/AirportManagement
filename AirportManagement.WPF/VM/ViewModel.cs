@@ -17,9 +17,9 @@ namespace AirportManagement.WPF.VM
         // у нас функция (вызвать могут только наследники) которая возращает true/false, а принимает
         // с аргументами я не понимаю чего-то 
         {
-            if (EqualityComparer<T>.Default.Equals(field, value))//сравнивает экземпляры класса EqualityComparer<T>
+            if (EqualityComparer<T>.Default.Equals(field, value))//одинаковы до вызова
                 return false;
-            field = value;//поле равно значению
+            field = value;//стали одинаковыми в результате вызова
             RaisePropertyChanged(propertyName);//вызывается метод чтоб изменить поле
             return true;
         }
