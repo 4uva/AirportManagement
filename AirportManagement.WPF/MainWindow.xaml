@@ -20,9 +20,15 @@
                 в силу привязки, попадает в свойство Filter
             -->
         </DockPanel>
+
+        <Button Margin="10" DockPanel.Dock="Bottom" HorizontalAlignment="Left"
+                Command="{Binding DeleteSelectedAirportCommand}">
+            Delete selected airport
+        </Button>
         <!-- ListView -этот список визуализирует список FilteredAirports
              находящийся в VM -->
-        <ListView ItemsSource="{Binding FilteredAirports}">
+        <ListView ItemsSource="{Binding FilteredAirports}"
+                  SelectedItem="{Binding SelectedAirport}">
             <!-- ItemsSource — это свойство, к которому мы привязываем коллекцию VM-элементов -->
             <ListView.View>
                 <!-- ListView.View — `<ListView.View>чтотоещё</ListView.View> ` — это установка свойства `View` в значение `чтотоещё`

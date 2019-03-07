@@ -2,7 +2,7 @@
 
 namespace AirportManagement.WPF.VM
 {
-    public class AirportViewModel : ViewModel
+    public class AirportViewModel : ViewModel//описание класса и есть определение типа
     {
         public AirportViewModel(Airport airport)
         {
@@ -29,6 +29,6 @@ namespace AirportManagement.WPF.VM
             //set { Set(ref locationName, value); }`
         }
 
-        Airport airport;//зачем нам эта строка
+       public readonly Airport airport;//
     }
 }
