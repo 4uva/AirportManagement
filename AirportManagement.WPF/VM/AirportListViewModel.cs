@@ -15,6 +15,8 @@ namespace AirportManagement.WPF.VM
         //имя совпадает с именем класса + нет возвращаемого типа - функция AirportListViewModel - к*/онструктор
         public AirportListViewModel(Repository repository)//читаем данные из базы
         {
+            this.repository = repository;//это инициализация поля, так как поле лежит в this
+
             foreach (var airport in repository.Airports)//это же обращение к объекту другого класса
             {
                 AirportViewModel airportViewModel = new AirportViewModel(airport); //создаем аэропорт для слоя WM
@@ -24,7 +26,7 @@ namespace AirportManagement.WPF.VM
                 filteredAirportsSet.Add(airportViewModel);//добавлен список аэропортов
                 //filteredAirportsSet,где оно инициализировано
             }
-
+           
             DeleteSelectedAirportCommand =
                 new RelayCommand(OnDeleteSelectedAirport, CanDeleteSelectedAirport);
         }//тип Action представляет собой (ссылку на) функцию
