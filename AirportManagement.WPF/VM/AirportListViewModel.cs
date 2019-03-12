@@ -111,8 +111,10 @@ namespace AirportManagement.WPF.VM
         void OnDeleteSelectedAirport()
         {
             repository.DeleteAirport(SelectedAirport.airport);// selectedairport contains reference for entity
-
-            //selectedAirportpublic RelayCommand(Action execute, Func<bool> canExecute)
+            FilteredAirports.Remove(SelectedAirport);
+            filteredAirportsSet.Remove(SelectedAirport);
+              Airports.Remove(SelectedAirport);
+            SelectedAirport = null;
             // удаляем аэропорт через репозиторий
             // но у нас его нету :( кого нет? репозитория нету в этом классе или есть? есть 
             // ага, мы его просто не сохранили в поле
