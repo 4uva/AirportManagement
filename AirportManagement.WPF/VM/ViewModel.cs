@@ -14,7 +14,7 @@ namespace AirportManagement.WPF.VM
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        // у нас функция (вызвать могут только наследники) которая возращает true/false, а принимает
+        // у нас функция (вызвать могут только наследники) которая возвращает true/false, а принимает
         // с аргументами я не понимаю чего-то 
         {
             if (EqualityComparer<T>.Default.Equals(field, value))//одинаковы до вызова

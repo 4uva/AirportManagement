@@ -107,7 +107,10 @@ namespace AirportManagement.WPF.VM
         }
 
         public RelayCommand DeleteSelectedAirportCommand { get; }
-
+        
+        //в строке 109 свойство, содержащее команду
+        //команда — это объект, реализующий интерфейс ICommand
+        //у неё можно вызвать функцию Execute &CanExecute
         void OnDeleteSelectedAirport()
         {
             repository.DeleteAirport(SelectedAirport.airport);// selectedairport contains reference for entity
@@ -123,7 +126,7 @@ namespace AirportManagement.WPF.VM
         }
 
         bool CanDeleteSelectedAirport() => SelectedAirport != null;
-
+       
         // [v] 1. кладём свойство SelectedAirport
         // [v] 2. кладём команду DeleteSelectedAirportCommand
         // [v] 3. команда будет удалёть из базы выбранный (selected) аэропорт

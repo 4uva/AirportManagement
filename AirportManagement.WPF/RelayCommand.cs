@@ -11,7 +11,7 @@ namespace AirportManagement.WPF
    //точнее, любой класс, который его реализуе
     class RelayCommand : ICommand
     {
-        protected readonly Func<bool> canExecute;
+        protected readonly Func<bool> canExecute;//поле делегатного типа
         protected readonly Action execute;//это поле типа Action
 
         public event EventHandler CanExecuteChanged;
@@ -32,7 +32,7 @@ namespace AirportManagement.WPF
        
         // тут аргументы функции типа Action  execute,но еxecute просто переменная типа Action
         // тут аргументы функции типа Func<bool>  , но  canExecuteпросто переменная типа Func<bool>
-        public RelayCommand(Action execute, Func<bool> canExecute)
+        public RelayCommand(Action execute, Func<bool> canExecute)//конструктор
         {
             // метод можно запихнуть в переменную, а делегат — тип этой переменной строка 36
             if (execute == null)
@@ -58,7 +58,7 @@ namespace AirportManagement.WPF
 //            параметры закончились `)` и больше ничего не делает `{ }`
 //`          () => true`: пара скобок означает пустой список параметров лямбды
         }
-
+     
         public bool CanExecute(object parameter) => canExecute();// return вызов функции правильно?
         //функцию там передали, мы её сохранили
         //в поле, и вызвали, когда нужно
